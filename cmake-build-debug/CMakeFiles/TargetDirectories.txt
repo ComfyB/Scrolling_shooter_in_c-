@@ -1,0 +1,3 @@
+/Users/christofferlehre/CLionProjects/cpp_eksamen3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/christofferlehre/CLionProjects/cpp_eksamen3/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/christofferlehre/CLionProjects/cpp_eksamen3/cmake-build-debug/CMakeFiles/cpp_eksamen3.dir

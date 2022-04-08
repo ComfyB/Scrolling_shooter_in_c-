@@ -1,0 +1,21 @@
+# ninja log v5
+1	248	1649174880391713322	CMakeFiles/cpp_eksamen3.dir/ObjectParamLoader.cpp.o	102b557d578686c2
+2	621	1649453250312109534	CMakeFiles/cpp_eksamen3.dir/GameObject.cpp.o	77cc08727a78e2b7
+2	622	1649453260032349991	CMakeFiles/cpp_eksamen3.dir/Game.cpp.o	6613c9854dd9c85f
+1	656	1649168797562293738	CMakeFiles/cpp_eksamen3.dir/TextureManager.cpp.o	f07e9afa5d5ce654
+1	634	1649451022808253438	CMakeFiles/cpp_eksamen3.dir/Enemy.cpp.o	added6caa342fd34
+1	602	1649453250293243391	CMakeFiles/cpp_eksamen3.dir/main.cpp.o	8c46454bae0b7d34
+622	661	1649453260072103334	cpp_eksamen3	53d8c247c81354be
+1	618	1649451022790200545	CMakeFiles/cpp_eksamen3.dir/Player.cpp.o	6ffeb480431c841e
+2	568	1649453250259455677	CMakeFiles/cpp_eksamen3.dir/InputHandler.cpp.o	610f68b2e0ad807
+2	389	1649452411053392425	CMakeFiles/cpp_eksamen3.dir/Randomizer.cpp.o	9466874cc480ff97
+1	525	1649452655108099674	CMakeFiles/cpp_eksamen3.dir/Bullet.cpp.o	90f96f0ea3b76b5c
+2	570	1649453354954250354	CMakeFiles/cpp_eksamen3.dir/InputHandler.cpp.o	610f68b2e0ad807
+1	600	1649453354984052122	CMakeFiles/cpp_eksamen3.dir/main.cpp.o	8c46454bae0b7d34
+2	619	1649453355003416518	CMakeFiles/cpp_eksamen3.dir/GameObject.cpp.o	77cc08727a78e2b7
+1	635	1649453382513267501	CMakeFiles/cpp_eksamen3.dir/Game.cpp.o	6613c9854dd9c85f
+635	673	1649453382552025961	cpp_eksamen3	53d8c247c81354be
+1	581	1649453408437790010	CMakeFiles/cpp_eksamen3.dir/GameObject.cpp.o	77cc08727a78e2b7
+582	620	1649453408477021224	cpp_eksamen3	53d8c247c81354be
+1	628	1649453597233585794	CMakeFiles/cpp_eksamen3.dir/GameObject.cpp.o	77cc08727a78e2b7
+628	666	1649453597272068335	cpp_eksamen3	53d8c247c81354be
