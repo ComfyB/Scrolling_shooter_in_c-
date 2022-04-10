@@ -2,8 +2,8 @@
 // Created by Christoffer Lehre on 08/04/2022.
 //
 
-#ifndef CPP_EKSAMEN3_RANDOMIZER_H
-#define CPP_EKSAMEN3_RANDOMIZER_H
+#ifndef _RANDOMIZER_H
+#define _RANDOMIZER_H
 
 #include "random"
 #include <SDL_timer.h>
@@ -14,4 +14,4 @@ public:
 };
 
 
-#endif //CPP_EKSAMEN3_RANDOMIZER_H
+#endif //_RANDOMIZER_H

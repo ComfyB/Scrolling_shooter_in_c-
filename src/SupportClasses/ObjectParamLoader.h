@@ -2,8 +2,8 @@
 // Created by Christoffer Lehre on 05/04/2022.
 //
 
-#ifndef CPP_EKSAMEN3_OBJECTPARAMLOADER_H
-#define CPP_EKSAMEN3_OBJECTPARAMLOADER_H
+#ifndef _OBJECTPARAMLOADER_H
+#define _OBJECTPARAMLOADER_H
 
 
 #include <string>
@@ -51,4 +51,4 @@ private:
 };
 
 
-#endif //CPP_EKSAMEN3_OBJECTPARAMLOADER_H
+#endif //_OBJECTPARAMLOADER_H

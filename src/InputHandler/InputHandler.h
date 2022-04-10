@@ -2,16 +2,14 @@
 // Created by Christoffer Lehre on 05/04/2022.
 //
 
-#ifndef CPP_EKSAMEN3_INPUTHANDLER_H
-#define CPP_EKSAMEN3_INPUTHANDLER_H
+#ifndef _INPUTHANDLER_H
+#define _INPUTHANDLER_H
 
 #include "SDL.h"
 
 class InputHandler {
 private:
-    InputHandler(){};
-
-    ~InputHandler(){};
+    InputHandler()=default;
 
 
     const Uint8 *keystates;
@@ -40,4 +38,4 @@ public:
 };
 
 
-#endif //CPP_EKSAMEN3_INPUTHANDLER_H
+#endif //_INPUTHANDLER_H

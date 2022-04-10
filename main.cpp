@@ -1,5 +1,4 @@
-#include "Game.h"
-#include "Randomizer.h"
+#include "src/Game/Game.h"
 
 int main() {
 

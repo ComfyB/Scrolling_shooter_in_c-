@@ -21,8 +21,11 @@ bool TextureManager::init() {
         TextureManager::Instance().clean();
         return false;
     }
+
     TTF_Init();
+
     m_ttfFont = TTF_OpenFont("../img/Font.ttf", 120);
+
     if (m_ttfFont == nullptr) {
         std::cout << "font initialize failed" << std::endl;
         TextureManager::Instance().clean();
@@ -83,6 +86,14 @@ void TextureManager::drawFrame(const std::string &id, Vector2D pos, Vector2D siz
     SDL_Rect srcRect{size.getX() * currentFrame, size.getY() * currentRow, size.getX(), size.getY()};
     SDL_Rect destRect{pos.getX(), pos.getY(), size.getX(), size.getY()};
     SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, angle, 0, sdlFlip);
+
+}
+
+void TextureManager::drawBar(Vector2D pos, Vector2D size){
+    SDL_SetRenderDrawColor(m_renderer,160,10,30,0);
+    SDL_Rect destRect{pos.getX(), pos.getY(), size.getX(), size.getY()};
+    SDL_RenderFillRect(m_renderer,&destRect);
+    SDL_SetRenderDrawColor(m_renderer,0,0,0,255);
 
 }
 

@@ -2,40 +2,49 @@
 // Created by Christoffer Lehre on 05/04/2022.
 //
 
-#ifndef CPP_EKSAMEN3_GAMEOBJECT_H
-#define CPP_EKSAMEN3_GAMEOBJECT_H
-
+#ifndef _GAMEOBJECT_H
+#define _GAMEOBJECT_H
 
 #include <string>
-#include "Vector2D.h"
-#include "ObjectParamLoader.h"
-#include "TextureManager.h"
+#include "../SupportClasses/Vector2D.h"
+#include "../SupportClasses/ObjectParamLoader.h"
+#include "SDL.h"
 
 class GameObject{
-private:
-    Vector2D m_position;
+protected:
     Vector2D m_velocity;
     Vector2D m_size;
+    Vector2D m_position;
+
+
+    Uint32 currentTime = 0;
+    Uint32 lastTime = 0;
 
     std::string m_textureID;
     int m_lives;
     int m_currentRow;
-    //int m_numRow;
-    int m_numFrames;
+    int m_rows;
+    int m_frames;
     int m_currentFrame;
 
     bool m_isDead;
-public:
+    bool m_hasHitBox;
+
+
     explicit GameObject(const ObjectParamLoader &pParams) : m_position(pParams.getMPosition()),
                                                             m_velocity(pParams.getMVelocity()),
                                                             m_size(pParams.getMSize()),
                                                             m_textureID(pParams.getMTextureId()),
-                                                            m_numFrames(pParams.getMNumFrames()),
+                                                            m_frames(pParams.getMNumFrames()),
                                                             m_lives(pParams.getMLives()) {
         m_isDead = false;
         m_currentRow = 0;
+        m_rows = 0;
         m_currentFrame = 0;
+        m_hasHitBox = true;
     }
+public:
+
 
     virtual void draw();
 
@@ -45,18 +54,23 @@ public:
 
     virtual void shoot();
 
-    [[nodiscard]] const Vector2D &getMPosition() const;
+    virtual void nextFrame();
 
-    [[nodiscard]] const Vector2D &getMSize() const;
 
-    void nextFrame();
+    [[nodiscard]] virtual bool isMIsDead() const ;
 
-    void setMVelocity(const Vector2D &mVelocity);
+    virtual void setMVelocity(Vector2D velocity);
 
-    [[nodiscard]] bool isMIsDead() const ;
+    virtual void checkCollision() ;
 
-    bool deleteOneLife();
+    virtual void checkOOB();
+
+    [[nodiscard]] virtual const Vector2D &getMPosition() const;
+
+    virtual Vector2D getMSize() const;
+
+    void setMHasHitBox(bool mHasHitBox);
 };
 
 
-#endif //CPP_EKSAMEN3_GAMEOBJECT_H
+#endif //_GAMEOBJECT_H

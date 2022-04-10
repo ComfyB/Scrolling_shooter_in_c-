@@ -3,7 +3,7 @@ project(cpp_eksamen3)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(cpp_eksamen3 main.cpp Game.cpp Game.h TextureManager.cpp TextureManager.h Vector2D.h GameObject.cpp GameObject.h ObjectParamLoader.cpp ObjectParamLoader.h Player.cpp Player.h InputHandler.cpp InputHandler.h Enemy.cpp Enemy.h Bullet.cpp Bullet.h Randomizer.cpp Randomizer.h)
+add_executable(cpp_eksamen3 main.cpp src/Game/Game.cpp src/Game/Game.h src/Game/TextureManager.cpp src/Game/TextureManager.h src/SupportClasses/Vector2D.h src/GameObjects/GameObject.cpp src/GameObjects/GameObject.h src/SupportClasses/ObjectParamLoader.h src/GameObjects/Player.cpp src/GameObjects/Player.h src/InputHandler/InputHandler.cpp src/InputHandler/InputHandler.h src/GameObjects/Enemy.cpp src/GameObjects/Enemy.h src/SupportClasses/Randomizer.cpp src/SupportClasses/Randomizer.h src/GameObjects/Projectile.cpp src/GameObjects/Projectile.h src/GameObjects/HealthBar.cpp src/GameObjects/HealthBar.h src/SupportClasses/SoundLoader.cpp src/SupportClasses/SoundLoader.h)
 
 
 

@@ -7,25 +7,25 @@
 
 
 #include <iostream>
-#include "map"
-#include "string"
+#include <string>
+#include <map>
 #include "SDL.h"
 #include "SDL_ttf.h"
 #include "SDL_image.h"
 #include "SDL_mixer.h"
 
 
-#include "Vector2D.h"
+#include "../SupportClasses/Vector2D.h"
 
 #define WINDOWHEIGHT 600
-#define WINDOWWIDTH 400
+#define WINDOWWIDTH 800
 
 class TextureManager {
 private:
-    TextureManager(){}
+    TextureManager()=default;
     std::map<std::string, SDL_Texture *> m_textureMap;
-    SDL_Window *m_window;
-    SDL_Renderer *m_renderer;
+    SDL_Window *m_window{};
+    SDL_Renderer *m_renderer{};
     TTF_Font *m_ttfFont = nullptr;
     SDL_Color m_yellow = {241, 250, 140};
 
@@ -53,7 +53,6 @@ public:
               double angle);
 
 
-
     void clean();
 
     SDL_Renderer* getRenderer(){
@@ -62,6 +61,8 @@ public:
 
 
     void renderText(const char *text,  Vector2D pos, Vector2D size);
+
+    void drawBar(Vector2D pos, Vector2D size);
 };
 
 
