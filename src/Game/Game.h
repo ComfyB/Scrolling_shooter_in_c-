@@ -10,7 +10,7 @@
 #include "../SupportClasses/Randomizer.h"
 #include "../GameObjects/Projectile.h"
 #include "../InputHandler/InputHandler.h"
-#include "TextureManager.h"
+#include "../SupportClasses/TextureManager.h"
 #include "../SupportClasses/ObjectParamLoader.h"
 #include "../GameObjects/Player.h"
 #include "../GameObjects/Enemy.h"

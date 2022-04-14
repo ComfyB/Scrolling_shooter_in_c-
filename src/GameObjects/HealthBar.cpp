@@ -3,7 +3,7 @@
 //
 
 #include "HealthBar.h"
-#include "../Game/TextureManager.h"
+#include "../SupportClasses/TextureManager.h"
 
 void HealthBar::draw() {
     TextureManager::Instance().drawBar(m_pos,m_size);

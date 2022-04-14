@@ -23,7 +23,6 @@ void Game::init() {
 
     addGameObject(m_player);
     randomEnemy();
-    randomEnemy();
     m_isRunning = true;
     Game::loop();
 }
@@ -46,8 +45,6 @@ void Game::loop() {
         m_gameObjects.erase(std::remove_if(m_gameObjects.begin(), m_gameObjects.end(),
                                            [](auto const &ob) {
                            if(ob->isMIsDead() && ob != Game::Instance().m_player) return true ;else return false;}), m_gameObjects.end());
-
-
         m_frameTime = SDL_GetTicks() - m_frameStart;
         if (m_frameTime < DELAY_TIME) {
             SDL_Delay((int) (DELAY_TIME - m_frameTime));

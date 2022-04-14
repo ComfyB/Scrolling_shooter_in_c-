@@ -15,7 +15,7 @@
 #include "SDL_mixer.h"
 
 
-#include "../SupportClasses/Vector2D.h"
+#include "Vector2D.h"
 
 #define WINDOWHEIGHT 600
 #define WINDOWWIDTH 800

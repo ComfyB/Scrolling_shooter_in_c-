@@ -3,7 +3,7 @@ project(cpp_eksamen3)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(cpp_eksamen3 main.cpp src/Game/Game.cpp src/Game/Game.h src/Game/TextureManager.cpp src/Game/TextureManager.h src/SupportClasses/Vector2D.h src/GameObjects/GameObject.cpp src/GameObjects/GameObject.h src/SupportClasses/ObjectParamLoader.h src/GameObjects/Player.cpp src/GameObjects/Player.h src/InputHandler/InputHandler.cpp src/InputHandler/InputHandler.h src/GameObjects/Enemy.cpp src/GameObjects/Enemy.h src/SupportClasses/Randomizer.cpp src/SupportClasses/Randomizer.h src/GameObjects/Projectile.cpp src/GameObjects/Projectile.h src/GameObjects/HealthBar.cpp src/GameObjects/HealthBar.h src/SupportClasses/SoundLoader.cpp src/SupportClasses/SoundLoader.h)
+add_executable(cpp_eksamen3 main.cpp src/Game/Game.cpp src/Game/Game.h src/SupportClasses/TextureManager.cpp src/SupportClasses/TextureManager.h src/SupportClasses/Vector2D.h src/GameObjects/GameObject.cpp src/GameObjects/GameObject.h src/SupportClasses/ObjectParamLoader.h src/GameObjects/Player.cpp src/GameObjects/Player.h src/InputHandler/InputHandler.cpp src/InputHandler/InputHandler.h src/GameObjects/Enemy.cpp src/GameObjects/Enemy.h src/SupportClasses/Randomizer.cpp src/SupportClasses/Randomizer.h src/GameObjects/Projectile.cpp src/GameObjects/Projectile.h src/GameObjects/HealthBar.cpp src/GameObjects/HealthBar.h src/SupportClasses/SoundLoader.cpp src/SupportClasses/SoundLoader.h src/States/Playing.cpp src/States/Playing.h src/States/Menu.cpp src/States/Menu.h src/States/GameOver.cpp src/States/GameOver.h src/States/GameLoop.cpp src/States/GameLoop.h src/Game/States.cpp src/Game/States.h)
 
 
 

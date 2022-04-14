@@ -86,12 +86,12 @@ build CMakeFiles/cpp_eksamen3.dir/src/Game/Game.cpp.o: CXX_COMPILER__cpp_eksamen
   OBJECT_DIR = CMakeFiles/cpp_eksamen3.dir
   OBJECT_FILE_DIR = CMakeFiles/cpp_eksamen3.dir/src/Game
 
-build CMakeFiles/cpp_eksamen3.dir/src/Game/TextureManager.cpp.o: CXX_COMPILER__cpp_eksamen3_Debug /Users/christofferlehre/CLionProjects/cpp_eksamen3/src/Game/TextureManager.cpp || cmake_object_order_depends_target_cpp_eksamen3
-  DEP_FILE = CMakeFiles/cpp_eksamen3.dir/src/Game/TextureManager.cpp.o.d
+build CMakeFiles/cpp_eksamen3.dir/src/SupportClasses/TextureManager.cpp.o: CXX_COMPILER__cpp_eksamen3_Debug /Users/christofferlehre/CLionProjects/cpp_eksamen3/src/SupportClasses/TextureManager.cpp || cmake_object_order_depends_target_cpp_eksamen3
+  DEP_FILE = CMakeFiles/cpp_eksamen3.dir/src/SupportClasses/TextureManager.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -std=gnu++20
   INCLUDES = -I/opt/homebrew/Cellar/sdl2/2.0.20/include/SDL2 -I/opt/homebrew/include/SDL2
   OBJECT_DIR = CMakeFiles/cpp_eksamen3.dir
-  OBJECT_FILE_DIR = CMakeFiles/cpp_eksamen3.dir/src/Game
+  OBJECT_FILE_DIR = CMakeFiles/cpp_eksamen3.dir/src/SupportClasses
 
 build CMakeFiles/cpp_eksamen3.dir/src/GameObjects/GameObject.cpp.o: CXX_COMPILER__cpp_eksamen3_Debug /Users/christofferlehre/CLionProjects/cpp_eksamen3/src/GameObjects/GameObject.cpp || cmake_object_order_depends_target_cpp_eksamen3
   DEP_FILE = CMakeFiles/cpp_eksamen3.dir/src/GameObjects/GameObject.cpp.o.d
@@ -149,6 +149,41 @@ build CMakeFiles/cpp_eksamen3.dir/src/SupportClasses/SoundLoader.cpp.o: CXX_COMP
   OBJECT_DIR = CMakeFiles/cpp_eksamen3.dir
   OBJECT_FILE_DIR = CMakeFiles/cpp_eksamen3.dir/src/SupportClasses
 
+build CMakeFiles/cpp_eksamen3.dir/src/States/Playing.cpp.o: CXX_COMPILER__cpp_eksamen3_Debug /Users/christofferlehre/CLionProjects/cpp_eksamen3/src/States/Playing.cpp || cmake_object_order_depends_target_cpp_eksamen3
+  DEP_FILE = CMakeFiles/cpp_eksamen3.dir/src/States/Playing.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -std=gnu++20
+  INCLUDES = -I/opt/homebrew/Cellar/sdl2/2.0.20/include/SDL2 -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = CMakeFiles/cpp_eksamen3.dir
+  OBJECT_FILE_DIR = CMakeFiles/cpp_eksamen3.dir/src/States
+
+build CMakeFiles/cpp_eksamen3.dir/src/States/Menu.cpp.o: CXX_COMPILER__cpp_eksamen3_Debug /Users/christofferlehre/CLionProjects/cpp_eksamen3/src/States/Menu.cpp || cmake_object_order_depends_target_cpp_eksamen3
+  DEP_FILE = CMakeFiles/cpp_eksamen3.dir/src/States/Menu.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -std=gnu++20
+  INCLUDES = -I/opt/homebrew/Cellar/sdl2/2.0.20/include/SDL2 -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = CMakeFiles/cpp_eksamen3.dir
+  OBJECT_FILE_DIR = CMakeFiles/cpp_eksamen3.dir/src/States
+
+build CMakeFiles/cpp_eksamen3.dir/src/States/GameOver.cpp.o: CXX_COMPILER__cpp_eksamen3_Debug /Users/christofferlehre/CLionProjects/cpp_eksamen3/src/States/GameOver.cpp || cmake_object_order_depends_target_cpp_eksamen3
+  DEP_FILE = CMakeFiles/cpp_eksamen3.dir/src/States/GameOver.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -std=gnu++20
+  INCLUDES = -I/opt/homebrew/Cellar/sdl2/2.0.20/include/SDL2 -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = CMakeFiles/cpp_eksamen3.dir
+  OBJECT_FILE_DIR = CMakeFiles/cpp_eksamen3.dir/src/States
+
+build CMakeFiles/cpp_eksamen3.dir/src/States/GameLoop.cpp.o: CXX_COMPILER__cpp_eksamen3_Debug /Users/christofferlehre/CLionProjects/cpp_eksamen3/src/States/GameLoop.cpp || cmake_object_order_depends_target_cpp_eksamen3
+  DEP_FILE = CMakeFiles/cpp_eksamen3.dir/src/States/GameLoop.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -std=gnu++20
+  INCLUDES = -I/opt/homebrew/Cellar/sdl2/2.0.20/include/SDL2 -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = CMakeFiles/cpp_eksamen3.dir
+  OBJECT_FILE_DIR = CMakeFiles/cpp_eksamen3.dir/src/States
+
+build CMakeFiles/cpp_eksamen3.dir/src/Game/States.cpp.o: CXX_COMPILER__cpp_eksamen3_Debug /Users/christofferlehre/CLionProjects/cpp_eksamen3/src/Game/States.cpp || cmake_object_order_depends_target_cpp_eksamen3
+  DEP_FILE = CMakeFiles/cpp_eksamen3.dir/src/Game/States.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -std=gnu++20
+  INCLUDES = -I/opt/homebrew/Cellar/sdl2/2.0.20/include/SDL2 -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = CMakeFiles/cpp_eksamen3.dir
+  OBJECT_FILE_DIR = CMakeFiles/cpp_eksamen3.dir/src/Game
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target cpp_eksamen3
@@ -157,7 +192,7 @@ build CMakeFiles/cpp_eksamen3.dir/src/SupportClasses/SoundLoader.cpp.o: CXX_COMP
 #############################################
 # Link the executable cpp_eksamen3
 
-build cpp_eksamen3: CXX_EXECUTABLE_LINKER__cpp_eksamen3_Debug CMakeFiles/cpp_eksamen3.dir/main.cpp.o CMakeFiles/cpp_eksamen3.dir/src/Game/Game.cpp.o CMakeFiles/cpp_eksamen3.dir/src/Game/TextureManager.cpp.o CMakeFiles/cpp_eksamen3.dir/src/GameObjects/GameObject.cpp.o CMakeFiles/cpp_eksamen3.dir/src/GameObjects/Player.cpp.o CMakeFiles/cpp_eksamen3.dir/src/InputHandler/InputHandler.cpp.o CMakeFiles/cpp_eksamen3.dir/src/GameObjects/Enemy.cpp.o CMakeFiles/cpp_eksamen3.dir/src/SupportClasses/Randomizer.cpp.o CMakeFiles/cpp_eksamen3.dir/src/GameObjects/Projectile.cpp.o CMakeFiles/cpp_eksamen3.dir/src/GameObjects/HealthBar.cpp.o CMakeFiles/cpp_eksamen3.dir/src/SupportClasses/SoundLoader.cpp.o | /opt/homebrew/lib/libSDL2_image.dylib /opt/homebrew/lib/libSDL2.dylib /opt/homebrew/Cellar/sdl2_ttf/2.0.18_1/lib/libSDL2_ttf.dylib /opt/homebrew/lib/libSDL2.dylib /opt/homebrew/lib/libSDL2_mixer.dylib /opt/homebrew/lib/libSDL2.dylib /opt/homebrew/Cellar/sdl2_ttf/2.0.18_1/lib/libSDL2_ttf.dylib /opt/homebrew/lib/libSDL2_mixer.dylib
+build cpp_eksamen3: CXX_EXECUTABLE_LINKER__cpp_eksamen3_Debug CMakeFiles/cpp_eksamen3.dir/main.cpp.o CMakeFiles/cpp_eksamen3.dir/src/Game/Game.cpp.o CMakeFiles/cpp_eksamen3.dir/src/SupportClasses/TextureManager.cpp.o CMakeFiles/cpp_eksamen3.dir/src/GameObjects/GameObject.cpp.o CMakeFiles/cpp_eksamen3.dir/src/GameObjects/Player.cpp.o CMakeFiles/cpp_eksamen3.dir/src/InputHandler/InputHandler.cpp.o CMakeFiles/cpp_eksamen3.dir/src/GameObjects/Enemy.cpp.o CMakeFiles/cpp_eksamen3.dir/src/SupportClasses/Randomizer.cpp.o CMakeFiles/cpp_eksamen3.dir/src/GameObjects/Projectile.cpp.o CMakeFiles/cpp_eksamen3.dir/src/GameObjects/HealthBar.cpp.o CMakeFiles/cpp_eksamen3.dir/src/SupportClasses/SoundLoader.cpp.o CMakeFiles/cpp_eksamen3.dir/src/States/Playing.cpp.o CMakeFiles/cpp_eksamen3.dir/src/States/Menu.cpp.o CMakeFiles/cpp_eksamen3.dir/src/States/GameOver.cpp.o CMakeFiles/cpp_eksamen3.dir/src/States/GameLoop.cpp.o CMakeFiles/cpp_eksamen3.dir/src/Game/States.cpp.o | /opt/homebrew/lib/libSDL2_image.dylib /opt/homebrew/lib/libSDL2.dylib /opt/homebrew/Cellar/sdl2_ttf/2.0.18_1/lib/libSDL2_ttf.dylib /opt/homebrew/lib/libSDL2.dylib /opt/homebrew/lib/libSDL2_mixer.dylib /opt/homebrew/lib/libSDL2.dylib /opt/homebrew/Cellar/sdl2_ttf/2.0.18_1/lib/libSDL2_ttf.dylib /opt/homebrew/lib/libSDL2_mixer.dylib
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk
   LINK_LIBRARIES = -L/opt/homebrew/Cellar/sdl2/2.0.20/lib  -lSDL2  /opt/homebrew/lib/libSDL2_image.dylib  /opt/homebrew/lib/libSDL2.dylib  /opt/homebrew/Cellar/sdl2_ttf/2.0.18_1/lib/libSDL2_ttf.dylib  /opt/homebrew/lib/libSDL2.dylib  /opt/homebrew/lib/libSDL2_mixer.dylib  /opt/homebrew/lib/libSDL2.dylib  /opt/homebrew/Cellar/sdl2_ttf/2.0.18_1/lib/libSDL2_ttf.dylib  /opt/homebrew/lib/libSDL2_mixer.dylib
   OBJECT_DIR = CMakeFiles/cpp_eksamen3.dir
