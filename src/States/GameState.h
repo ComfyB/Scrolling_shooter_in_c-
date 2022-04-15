@@ -16,6 +16,8 @@ public:
     virtual bool onEnter() = 0;
     virtual bool  onExit() = 0;
     [[nodiscard]] virtual std::string getStateID() const = 0;
+    virtual ~GameState(){};
+
 };
 
 

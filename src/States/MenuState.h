@@ -12,16 +12,16 @@
 class MenuState : public GameState{
 public:
 
-    MenuState() {}
-    ~MenuState() {}
-    virtual void update();
-    virtual void render();
-    virtual bool onEnter();
-    virtual bool onExit();
-    virtual std::string getStateID() const {return m_menuID;}
+    MenuState()= default;
+    ~MenuState() override = default;
+    void update() override;
+    void render() override;
+    bool onEnter() override;
+    bool onExit() override;
+    [[nodiscard]]  std::string getStateID() const override;
 
 private:
-    static const std::string m_menuID;
+    const std::string m_menuID;
 };
 
 

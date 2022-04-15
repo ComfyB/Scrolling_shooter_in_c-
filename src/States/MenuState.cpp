@@ -25,3 +25,7 @@ bool MenuState::onExit() {
     return true;
 
 }
+
+std::string MenuState::getStateID() const {
+    return m_menuID;
+}
