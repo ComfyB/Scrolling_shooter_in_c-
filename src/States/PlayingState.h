@@ -25,6 +25,8 @@ private:
 
 
     std::shared_ptr<Renderable> getPlayer() const;
+
+    void keyInputs();
 };
 
 #endif //CPP_EKSAMEN3_PLAYINGSTATE_H

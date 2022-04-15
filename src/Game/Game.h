@@ -27,7 +27,6 @@ private:
     std::vector<std::shared_ptr<Renderable>> m_renderableObjects;
     std::shared_ptr<Renderable> m_player;
 
-
     GameStateMachine *m_gameStateMachine;
 
 
@@ -59,6 +58,8 @@ public:
 
 
     void renderLoop();
+
+    GameStateMachine *getMGameStateMachine() const;
 
     [[nodiscard]] Uint32 getFrameTime() const;
 

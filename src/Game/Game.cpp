@@ -76,3 +76,7 @@ Uint32 Game::getFrameTime() const {
     return m_frameTime;
 }
 
+GameStateMachine *Game::getMGameStateMachine() const {
+    return m_gameStateMachine;
+}
+
