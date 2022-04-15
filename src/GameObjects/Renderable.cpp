@@ -3,22 +3,22 @@
 //
 
 #include <memory>
-#include "GameObject.h"
+#include "Renderable.h"
 #include "Projectile.h"
 #include "../Game/Game.h"
 #include "../SupportClasses/SoundLoader.h"
 
 
-void GameObject::draw() {
+void Renderable::draw() {
     TextureManager::Instance().drawFrame(m_textureID, m_position, m_size, m_currentFrame, m_currentRow,
                                          TextureManager::Instance().getRenderer(), SDL_FLIP_NONE, 0);
 }
 
 
-void GameObject::shoot() {
+void Renderable::shoot() {
     currentTime = SDL_GetTicks64();
     if(currentTime>lastTime+100) {
-        Game::Instance().addGameObject(std::shared_ptr<GameObject>(
+        Game::Instance().addGameObject(std::shared_ptr<Renderable>(
 
                 new Projectile({m_position + Vector2D{20, -60}, {5, 20}, {0, -5}, "bullet", 1,
                                 1})));
@@ -28,7 +28,7 @@ void GameObject::shoot() {
     }
 }
 
-void GameObject::update() {
+void Renderable::update() {
 
      nextFrame();
     //make sure the object can´t leave screen
@@ -41,7 +41,7 @@ void GameObject::update() {
 }
 
 
-void GameObject::checkOOB() {
+void Renderable::checkOOB() {
     if (m_position.getX() <= 0){
         m_position.setX(1);
         m_velocity.setX(-m_velocity.getX()) ;
@@ -63,21 +63,21 @@ void GameObject::checkOOB() {
 
 }
 
-void GameObject::clean() {
+void Renderable::clean() {
 }
 
-void GameObject::nextFrame() {
+void Renderable::nextFrame() {
     m_currentFrame = int(SDL_GetTicks() / 100) % m_frames;
 
 }
 
 
-bool GameObject::isMIsDead() const {
+bool Renderable::isMIsDead() const {
     return m_isDead;
 }
 
 
-void GameObject::checkCollision() {
+void Renderable::checkCollision() {
     for (const auto &two: Game::Instance().getGameObjects()) {
         // collision x-axis?
         bool collisionX = m_position.getX() + m_size.getX() >= two->getMPosition().getX() &&
@@ -97,18 +97,18 @@ void GameObject::checkCollision() {
     }
 }}
 
-void GameObject::setMVelocity(Vector2D velocity) {
+void Renderable::setMVelocity(Vector2D velocity) {
     m_velocity = velocity;
 }
 
-const Vector2D &GameObject::getMPosition() const {
+const Vector2D &Renderable::getMPosition() const {
     return m_position;
 }
 
-Vector2D GameObject::getMSize() const {
+Vector2D Renderable::getMSize() const {
     return m_size;
 }
 
-void GameObject::setMHasHitBox(bool mHasHitBox) {
+void Renderable::setMHasHitBox(bool mHasHitBox) {
     m_hasHitBox = mHasHitBox;
 }

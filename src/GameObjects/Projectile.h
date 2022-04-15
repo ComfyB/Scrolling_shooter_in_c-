@@ -6,10 +6,10 @@
 #define _PROJECTILE_H
 
 
-#include "GameObject.h"
-class Projectile : public GameObject {
+#include "Renderable.h"
+class Projectile : public Renderable {
 public:
-    explicit Projectile(const ObjectParamLoader &pParams) : GameObject(pParams) {}
+    explicit Projectile(const ObjectParamLoader &pParams) : Renderable(pParams) {}
 
     void draw() override;
 

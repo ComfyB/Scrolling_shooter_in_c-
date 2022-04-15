@@ -6,14 +6,14 @@
 #define _H_ENEMY_H
 
 
-#include "GameObject.h"
+#include "Renderable.h"
 #include "HealthBar.h"
 
-class Enemy : public GameObject {
+class Enemy : public Renderable {
 private:
     HealthBar *m_healthBar;
 public:
-    explicit Enemy(const ObjectParamLoader &pParams) : GameObject(pParams)     ,    m_healthBar (new HealthBar(m_lives*20 ,m_position, {50,5}))
+    explicit Enemy(const ObjectParamLoader &pParams) : Renderable(pParams)     , m_healthBar (new HealthBar(m_lives * 20 , m_position, {50, 5}))
     {
     }
 

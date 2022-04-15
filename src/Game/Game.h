@@ -14,6 +14,8 @@
 #include "../SupportClasses/ObjectParamLoader.h"
 #include "../GameObjects/Player.h"
 #include "../GameObjects/Enemy.h"
+#include "States.h"
+#include "../States/GameStateMachine.h"
 
 class Game {
 private:
@@ -23,8 +25,15 @@ private:
     Uint32 m_frameStart;
     Uint32 m_frameTime;
 
-    std::vector<std::shared_ptr<GameObject>> m_gameObjects;
-    std::shared_ptr<GameObject> m_player;
+    std::vector<std::shared_ptr<Renderable>> m_gameObjects;
+    std::shared_ptr<Renderable> m_player;
+
+    States::gameState m_currentGameState;
+
+    GameStateMachine* m_gameStateMachine;
+
+
+
 public:
     Game(const Game &) = delete;
 
@@ -45,18 +54,20 @@ public:
 
     void quit();
 
-    [[nodiscard]] std::shared_ptr<GameObject> getPlayer() const;
+    [[nodiscard]] std::shared_ptr<Renderable> getPlayer() const;
 
-    void addGameObject(const std::shared_ptr<GameObject> &newGO);
+    void addGameObject(const std::shared_ptr<Renderable> &newGO);
 
-  //  static bool checkCollision(const std::shared_ptr<GameObject> &one, const std::shared_ptr<GameObject> &two);
+  //  static bool checkCollision(const std::shared_ptr<Renderable> &one, const std::shared_ptr<Renderable> &two);
 
-    [[nodiscard]] const std::vector<std::shared_ptr<GameObject>> &getGameObjects() const;
+    [[nodiscard]] const std::vector<std::shared_ptr<Renderable>> &getGameObjects() const;
 
     void randomEnemy();
 
   //  void shoot() const;
   Uint32 getFrameTime() const;
+
+    void renderLoop();
 };
 
 

@@ -7,11 +7,15 @@
 
 
 class States {
-    void Playing();
-    void GameOver();
-    void Menu();
-    void HighScore();
 
+
+public:
+    enum gameState {
+        MENU = 0,
+        PLAY = 1,
+        GAMEOVER = 2,
+        HIGHSCORE = 3
+    };
 };
 
 
