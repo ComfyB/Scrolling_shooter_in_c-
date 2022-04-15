@@ -7,12 +7,10 @@
 
 
 #include "Renderable.h"
-#include "../Game/States.h"
 class MenuObject : public Renderable{
 
 private:
     std::string text;
-    States::gameState state;
 };
 
 

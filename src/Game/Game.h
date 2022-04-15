@@ -14,24 +14,21 @@
 #include "../SupportClasses/ObjectParamLoader.h"
 #include "../GameObjects/Player.h"
 #include "../GameObjects/Enemy.h"
-#include "States.h"
 #include "../States/GameStateMachine.h"
 
 class Game {
 private:
-    Game(){};
+    Game() {};
 
     bool m_isRunning;
     Uint32 m_frameStart;
     Uint32 m_frameTime;
 
-    std::vector<std::shared_ptr<Renderable>> m_gameObjects;
+    std::vector<std::shared_ptr<Renderable>> m_renderableObjects;
     std::shared_ptr<Renderable> m_player;
 
-    States::gameState m_currentGameState;
 
-    GameStateMachine* m_gameStateMachine;
-
+    GameStateMachine *m_gameStateMachine;
 
 
 public:
@@ -54,20 +51,17 @@ public:
 
     void quit();
 
-    [[nodiscard]] std::shared_ptr<Renderable> getPlayer() const;
-
     void addGameObject(const std::shared_ptr<Renderable> &newGO);
-
-  //  static bool checkCollision(const std::shared_ptr<Renderable> &one, const std::shared_ptr<Renderable> &two);
 
     [[nodiscard]] const std::vector<std::shared_ptr<Renderable>> &getGameObjects() const;
 
     void randomEnemy();
 
-  //  void shoot() const;
-  Uint32 getFrameTime() const;
 
     void renderLoop();
+
+    [[nodiscard]] Uint32 getFrameTime() const;
+
 };
 
 

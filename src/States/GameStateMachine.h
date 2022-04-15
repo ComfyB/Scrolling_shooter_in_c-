@@ -18,9 +18,11 @@ public:
 
     void popState(GameState* pState);
 
+    [[nodiscard]] const std::vector<GameState *> &getMGameState() const;
+
 
 private:
-    std::vector<GameState*> m_gameStates;
+    std::vector<GameState*> m_gameState;
 
 };
 

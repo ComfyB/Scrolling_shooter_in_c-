@@ -9,30 +9,35 @@
 
 class InputHandler {
 private:
-    InputHandler()=default;
+    InputHandler() = default;
 
 
-    const Uint8 *keystates;
-
+    const Uint8 *keyStates;
 
 
 public:
-    InputHandler(const InputHandler&) = delete;
-    InputHandler & operator = (const InputHandler&) = delete;
-    InputHandler(InputHandler&&) = delete;
-    InputHandler & operator = (InputHandler &&) = delete;
+    enum keys {
+        UP = 10200, DOWN = 10201, LEFT = 10203, RIGHT = 10204, NEWGAME = 10205, QUIT = 10206, SPACE = 10207, RANDOMENEMY = 10208 //ID's/ numbers to make the enum work
+    };
 
-    static auto& Instance(){
+    InputHandler(const InputHandler &) = delete;
+
+    InputHandler &operator=(const InputHandler &) = delete;
+
+    InputHandler(InputHandler &&) = delete;
+
+    InputHandler &operator=(InputHandler &&) = delete;
+
+    static auto &Instance() {
         static InputHandler inputHandler;
         return inputHandler;
     }
+
     void init();
 
-    void update();
+    keys update();
 
     void clean();
-
-
 
 
 };
