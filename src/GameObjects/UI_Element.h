@@ -31,6 +31,8 @@ public:
 
     void checkOOB() override;
 
+    void setMText(const char *mText) override;
+
     const Vector2D &getMPosition() const override;
 
     Vector2D getMSize() const override;

@@ -51,3 +51,7 @@ Vector2D UI_Element::getMSize() const {
 UI_Element::UI_Element(const ObjectParamLoader &pParams) : GameObject(pParams) {
     m_hasHitBox = false;
 }
+
+void UI_Element::setMText(const char *mText) {
+    GameObject::setMText(mText);
+}

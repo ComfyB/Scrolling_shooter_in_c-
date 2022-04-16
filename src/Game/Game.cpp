@@ -51,11 +51,11 @@ void Game::loop() {
 }
 
 void Game::renderLoop() {
-    std::for_each(m_renderableObjects.begin(), m_renderableObjects.end(), [](std::shared_ptr<GameObject> &ob) { ob->update(); });
-    std::for_each(m_renderableObjects.begin(), m_renderableObjects.end(), [](std::shared_ptr<GameObject> &ob) { ob->draw(); });
-    m_renderableObjects.erase(std::remove_if(m_renderableObjects.begin(), m_renderableObjects.end(),
-                                             [](auto const &ob) {
-                       if(ob->isMIsDead() && ob != Instance().m_player) return true ;else return false;}), m_renderableObjects.end());
+    std::for_each(m_gameObjects.begin(), m_gameObjects.end(), [](std::shared_ptr<GameObject> &ob) { ob->update(); });
+    std::for_each(m_gameObjects.begin(), m_gameObjects.end(), [](std::shared_ptr<GameObject> &ob) { ob->draw(); });
+    m_gameObjects.erase(std::remove_if(m_gameObjects.begin(), m_gameObjects.end(),
+                                       [](auto const &ob) {
+                       if(ob->isMIsDead() && ob != Instance().m_player) return true ;else return false;}), m_gameObjects.end());
 }
 
 void Game::quit() {
@@ -65,11 +65,11 @@ void Game::quit() {
 
 
 void Game::addGameObject(const std::shared_ptr<GameObject> &pGO) {
-    m_renderableObjects.emplace_back(pGO);
+    m_gameObjects.emplace_back(pGO);
 }
 
 const std::vector<std::shared_ptr<GameObject>> &Game::getGameObjects() const {
-    return m_renderableObjects;
+    return m_gameObjects;
 }
 
 Uint32 Game::getFrameTime() const {
@@ -81,9 +81,9 @@ GameStateMachine *Game::getMGameStateMachine() const {
 }
 
 void Game::cleanState() {
-    for(auto obj : m_renderableObjects){
+    for(auto obj : m_gameObjects){
         obj.get()->clean();
     }
-    m_renderableObjects.clear();
+    m_gameObjects.clear();
 }
 

@@ -8,7 +8,9 @@
 
 #include <string>
 #include <utility>
+#include <memory>
 #include "GameState.h"
+#include "../GameObjects/GameObject.h"
 
 class MenuState : public GameState{
 public:
@@ -21,6 +23,11 @@ public:
     [[nodiscard]]  std::string getStateID() const override;
 
 private:
+    enum menuItem{
+        NEWGAME,HIGHSCORE
+    };
+    std::shared_ptr<GameObject> selector;
+    menuItem currentSelection;
     const std::string m_menuID;
 };
 

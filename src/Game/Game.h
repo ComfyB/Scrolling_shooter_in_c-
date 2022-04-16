@@ -24,7 +24,7 @@ private:
     Uint32 m_frameStart;
     Uint32 m_frameTime;
 
-    std::vector<std::shared_ptr<GameObject>> m_renderableObjects;
+    std::vector<std::shared_ptr<GameObject>> m_gameObjects;
     std::shared_ptr<GameObject> m_player;
 
     GameStateMachine *m_gameStateMachine;

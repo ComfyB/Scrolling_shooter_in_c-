@@ -75,6 +75,8 @@ public:
 
     void setMHasHitBox(bool mHasHitBox);
 
+    void setMPosition(const Vector2D &mPosition);
+
 };
 
 
