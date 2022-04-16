@@ -5,14 +5,14 @@
 #ifndef _PLAYER_H
 #define _PLAYER_H
 
-#include "Renderable.h"
+#include "GameObject.h"
 #include "HealthBar.h"
 
-class Player : public Renderable {
+class Player : public GameObject {
 private:
     HealthBar* m_healthBar;
 public:
-    explicit Player(const ObjectParamLoader &pParams, HealthBar *healthBar) : Renderable(pParams), m_healthBar(healthBar) {}
+    explicit Player(const ObjectParamLoader &pParams, HealthBar *healthBar) : GameObject(pParams), m_healthBar(healthBar) {}
 
     void draw() override ;
 

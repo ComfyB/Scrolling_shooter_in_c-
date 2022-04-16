@@ -2,12 +2,15 @@
 // Created by Christoffer Lehre on 10/04/2022.
 //
 
+#include <charconv>
 #include "PlayingState.h"
 #include "../Game/Game.h"
 #include "../SupportClasses/SoundLoader.h"
 #include "MenuState.h"
+#include "../GameObjects/TextObject.h"
 
 void PlayingState::update() {
+    updateScore();
     keyInputs();
 }
 
@@ -28,13 +31,15 @@ void PlayingState::keyInputs() {
         case InputHandler::NEWGAME:
             break;
         case InputHandler::QUIT:
-            Game::Instance().getMGameStateMachine()->pushState(new MenuState);
+            Game::Instance().getMGameStateMachine()->changeState(new MenuState("Menu"));
 
             break;
         case InputHandler::SPACE:
             m_player->shoot();
             break;
         case InputHandler::RANDOMENEMY:
+            break;
+        case InputHandler::NOTHING:
             break;
     };
 }
@@ -45,23 +50,33 @@ void PlayingState::render() {
 
 bool PlayingState::onEnter() {
 
-    TextureManager::Instance().load("../img/ship3.png", "ship");
-    TextureManager::Instance().load("../img/UFO.png", "enemy");
-    TextureManager::Instance().load("../img/bullet.png", "bullet");
+    TextureManager::instance().load("../img/ship3.png", "ship");
+    TextureManager::instance().load("../img/UFO.png", "enemy");
+    TextureManager::instance().load("../img/bullet.png", "bullet");
     SoundLoader::instance().loadSound("../sound/shoot.wav", "shoot");
-    m_player = std::shared_ptr<Renderable>(new Player({{10, 300}, {50, 64}, {1, 1}, "ship", 5, 4}, new HealthBar{80, {0, 0}, {80, 15}}));
+    m_scoreText = std::shared_ptr<GameObject>(new TextObject({{600, 30}, {120, 30}, {0, 0}, "NULL", 1, 1}, "1"));
+    m_scoreText->setMHasHitBox(false);
+    m_player = std::shared_ptr<GameObject>(new Player({{10, 300}, {50, 64}, {1, 1}, "ship", 5, 4}, new HealthBar{80, {0, 0}, {80, 15}}));
+    Game::Instance().addGameObject(m_scoreText);
     Game::Instance().addGameObject(m_player);
     Game::Instance().randomEnemy();
     return true;
 }
 
 bool PlayingState::onExit() {
-    return false;
+    Game::Instance().cleanState();
+    return true;
 }
 
 std::string PlayingState::getStateID() const {
     return m_menuID;
 }
-std::shared_ptr<Renderable> PlayingState::getPlayer() const {
+std::shared_ptr<GameObject> PlayingState::getPlayer() const {
     return m_player;
+}
+
+void PlayingState::updateScore() {
+    m_scoreText_string = "score" + std::to_string(m_score);
+    m_scoreText->setMText(m_scoreText_string.c_str());
+
 }

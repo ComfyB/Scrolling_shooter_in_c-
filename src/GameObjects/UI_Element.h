@@ -1,21 +1,25 @@
 //
-// Created by Christoffer Lehre on 09/04/2022.
+// Created by Christoffer Lehre on 15/04/2022.
 //
 
-#ifndef _PROJECTILE_H
-#define _PROJECTILE_H
+#ifndef CPP_EKSAMEN3_UI_ELEMENT_H
+#define CPP_EKSAMEN3_UI_ELEMENT_H
 
 
 #include "GameObject.h"
-class Projectile : public GameObject {
-public:
-    explicit Projectile(const ObjectParamLoader &pParams) : GameObject(pParams) {}
 
+class UI_Element : public GameObject{
+public:
+    UI_Element(const ObjectParamLoader &pParams);
+
+public:
     void draw() override;
 
     void update() override;
 
     void clean() override;
+
+    void shoot() override;
 
     void nextFrame() override;
 
@@ -30,8 +34,7 @@ public:
     const Vector2D &getMPosition() const override;
 
     Vector2D getMSize() const override;
-
 };
 
 
-#endif //_PROJECTILE_H
+#endif //CPP_EKSAMEN3_UI_ELEMENT_H

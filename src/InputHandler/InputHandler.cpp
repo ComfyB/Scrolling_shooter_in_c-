@@ -18,57 +18,29 @@ InputHandler::keys InputHandler::update() {
         if (event.type == SDL_QUIT)
             Game::Instance().quit();
         else{
-            if (keyStates[SDL_SCANCODE_W] || keyStates[SDL_SCANCODE_UP]) {
+            if (keyStates[SDL_SCANCODE_W] | keyStates[SDL_SCANCODE_UP]) {
                 return UP;
             }
-            if (keyStates[SDL_SCANCODE_A] || keyStates[SDL_SCANCODE_LEFT]) {
+            if (keyStates[SDL_SCANCODE_A] | keyStates[SDL_SCANCODE_LEFT]) {
                 return LEFT;
             }
-            if (keyStates[SDL_SCANCODE_S] || keyStates[SDL_SCANCODE_DOWN]) {
+            if (keyStates[SDL_SCANCODE_S] | keyStates[SDL_SCANCODE_DOWN]) {
                 return DOWN;
             }
-            if (keyStates[SDL_SCANCODE_D] || keyStates[SDL_SCANCODE_RIGHT]) {
+            if (keyStates[SDL_SCANCODE_D] | keyStates[SDL_SCANCODE_RIGHT]) {
                 return RIGHT;
             }
             if (keyStates[SDL_SCANCODE_SPACE]) {
                 return SPACE;
             }
-            if (keyStates[SDL_SCANCODE_ESCAPE] || keyStates[SDL_SCANCODE_Q]) {
+            if (keyStates[SDL_SCANCODE_ESCAPE] | keyStates[SDL_SCANCODE_Q]) {
                 return QUIT;
             }
             if (keyStates[SDL_SCANCODE_T]) {
                 return RANDOMENEMY;
             }
         }
-        return QUIT;
-   /*     else {
-            if (keyStates[SDL_SCANCODE_W] | keyStates[SDL_SCANCODE_UP]) {
-                Game::Instance().getPlayer()->setMVelocity({0, -2});
-            }
-            if (keyStates[SDL_SCANCODE_A] | keyStates[SDL_SCANCODE_LEFT]) {
-                Game::Instance().getPlayer()->setMVelocity({-2, 0});
-
-            }
-            if (keyStates[SDL_SCANCODE_S] | keyStates[SDL_SCANCODE_DOWN]) {
-                Game::Instance().getPlayer()->setMVelocity({0, 2});
-
-            }
-            if (keyStates[SDL_SCANCODE_D] | keyStates[SDL_SCANCODE_RIGHT]) {
-                Game::Instance().getPlayer()->setMVelocity({2, 0});
-
-            }
-            if (keyStates[SDL_SCANCODE_SPACE]) {
-                Game::Instance().getPlayer()->shoot();
-
-            }
-            if (keyStates[SDL_SCANCODE_ESCAPE] | keyStates[SDL_SCANCODE_Q]) {
-                Game::Instance().quit();
-            }
-            if (keyStates[SDL_SCANCODE_T]) {
-                Game::Instance().randomEnemy();
-            }
-
-        }*/
+        return NOTHING;
 
     }
 }

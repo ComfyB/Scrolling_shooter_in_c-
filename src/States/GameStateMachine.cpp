@@ -2,6 +2,7 @@
 // Created by Christoffer Lehre on 14/04/2022.
 //
 
+#include <iostream>
 #include "GameStateMachine.h"
 
 void GameStateMachine::pushState(GameState *pState) {

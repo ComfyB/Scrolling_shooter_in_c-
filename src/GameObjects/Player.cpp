@@ -6,52 +6,52 @@
 
 void Player::draw() {
     m_healthBar->draw();
-    Renderable::draw();
+    GameObject::draw();
 }
 
 void Player::update() {
     m_healthBar->setCurrent(14*m_lives);
     m_healthBar->updatePos(m_position + Vector2D{-10,-30});
-    Renderable::update();
+    GameObject::update();
 }
 
 void Player::clean() {
-    Renderable::clean();
+    GameObject::clean();
 }
 
 
 void Player::nextFrame() {
-    Renderable::nextFrame();
+    GameObject::nextFrame();
 }
 
 bool Player::isMIsDead() const {
-    return Renderable::isMIsDead();
+    return GameObject::isMIsDead();
 }
 
 void Player::setMVelocity(Vector2D velocity) {
-    Renderable::setMVelocity(velocity);
+    GameObject::setMVelocity(velocity);
 }
 
 void Player::checkCollision() {
-    Renderable::checkCollision();
+    GameObject::checkCollision();
 }
 
 void Player::checkOOB() {
-    Renderable::checkOOB();
+    GameObject::checkOOB();
 }
 
 const Vector2D &Player::getMPosition() const {
-    return Renderable::getMPosition();
+    return GameObject::getMPosition();
 }
 
 Vector2D Player::getMSize() const {
-    return Renderable::getMSize();
+    return GameObject::getMSize();
 }
 
 void Player::shoot() {
 
 
-    Renderable::shoot();
+    GameObject::shoot();
 }
 
 

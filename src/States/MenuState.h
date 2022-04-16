@@ -7,12 +7,12 @@
 
 
 #include <string>
+#include <utility>
 #include "GameState.h"
 
 class MenuState : public GameState{
 public:
-
-    MenuState()= default;
+    explicit MenuState(std::string id): m_menuID(std::move(id)) {  };
     ~MenuState() override = default;
     void update() override;
     void render() override;

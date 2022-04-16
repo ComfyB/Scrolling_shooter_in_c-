@@ -12,13 +12,13 @@ bool TextureManager::init() {
                                 SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
     if (m_window == nullptr) {
         std::cout << "window initialize failed" << std::endl;
-        TextureManager::Instance().clean();
+        TextureManager::instance().clean();
         return false;
     }
     m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
     if (m_renderer == nullptr) {
         std::cout << "renderer initialize failed" << std::endl;
-        TextureManager::Instance().clean();
+        TextureManager::instance().clean();
         return false;
     }
 
@@ -28,7 +28,7 @@ bool TextureManager::init() {
 
     if (m_ttfFont == nullptr) {
         std::cout << "font initialize failed" << std::endl;
-        TextureManager::Instance().clean();
+        TextureManager::instance().clean();
         return false;
     }
 

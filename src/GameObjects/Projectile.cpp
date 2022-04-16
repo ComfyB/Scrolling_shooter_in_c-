@@ -5,44 +5,44 @@
 #include "Projectile.h"
 
 void Projectile::draw() {
-    Renderable::draw();
+    GameObject::draw();
 
 }
 
 void Projectile::update() {
-    Renderable::update();
+    GameObject::update();
 }
 
 void Projectile::clean() {
-    Renderable::clean();
+    GameObject::clean();
 }
 
 void Projectile::nextFrame() {
-    Renderable::nextFrame();
+    GameObject::nextFrame();
 }
 
 bool Projectile::isMIsDead() const {
-    return Renderable::isMIsDead();
+    return GameObject::isMIsDead();
 }
 
 void Projectile::setMVelocity(Vector2D velocity) {
-    Renderable::setMVelocity(velocity);
+    GameObject::setMVelocity(velocity);
 }
 
 void Projectile::checkCollision() {
-    Renderable::checkCollision();
+    GameObject::checkCollision();
 }
 
 void Projectile::checkOOB() {
     if(m_position.getY()<5)
         m_isDead= true;
-    Renderable::checkOOB();
+    GameObject::checkOOB();
 }
 
 const Vector2D &Projectile::getMPosition() const {
-    return Renderable::getMPosition();
+    return GameObject::getMPosition();
 }
 
 Vector2D Projectile::getMSize() const {
-    return Renderable::getMSize();
+    return GameObject::getMSize();
 }

@@ -3,22 +3,22 @@
 //
 
 #include <memory>
-#include "Renderable.h"
+#include "GameObject.h"
 #include "Projectile.h"
 #include "../Game/Game.h"
 #include "../SupportClasses/SoundLoader.h"
 
 
-void Renderable::draw() {
-    TextureManager::Instance().drawFrame(m_textureID, m_position, m_size, m_currentFrame, m_currentRow,
-                                         TextureManager::Instance().getRenderer(), SDL_FLIP_NONE, 0);
+void GameObject::draw() {
+    TextureManager::instance().drawFrame(m_textureID, m_position, m_size, m_currentFrame, m_currentRow,
+                                         TextureManager::instance().getRenderer(), SDL_FLIP_NONE, 0);
 }
 
 
-void Renderable::shoot() {
+void GameObject::shoot() {
     currentTime = SDL_GetTicks64();
     if(currentTime>lastTime+100) {
-        Game::Instance().addGameObject(std::shared_ptr<Renderable>(
+        Game::Instance().addGameObject(std::shared_ptr<GameObject>(
 
                 new Projectile({m_position + Vector2D{20, -60}, {5, 20}, {0, -5}, "bullet", 1,
                                 1})));
@@ -28,7 +28,7 @@ void Renderable::shoot() {
     }
 }
 
-void Renderable::update() {
+void GameObject::update() {
 
      nextFrame();
     //make sure the object can´t leave screen
@@ -41,7 +41,7 @@ void Renderable::update() {
 }
 
 
-void Renderable::checkOOB() {
+void GameObject::checkOOB() {
     if (m_position.getX() <= 0){
         m_position.setX(1);
         m_velocity.setX(-m_velocity.getX()) ;
@@ -63,21 +63,21 @@ void Renderable::checkOOB() {
 
 }
 
-void Renderable::clean() {
+void GameObject::clean() {
 }
 
-void Renderable::nextFrame() {
+void GameObject::nextFrame() {
     m_currentFrame = int(SDL_GetTicks() / 100) % m_frames;
 
 }
 
 
-bool Renderable::isMIsDead() const {
+bool GameObject::isMIsDead() const {
     return m_isDead;
 }
 
 
-void Renderable::checkCollision() {
+void GameObject::checkCollision() {
     for (const auto &two: Game::Instance().getGameObjects()) {
         // collision x-axis?
         bool collisionX = m_position.getX() + m_size.getX() >= two->getMPosition().getX() &&
@@ -97,18 +97,25 @@ void Renderable::checkCollision() {
     }
 }}
 
-void Renderable::setMVelocity(Vector2D velocity) {
+void GameObject::setMVelocity(Vector2D velocity) {
     m_velocity = velocity;
 }
 
-const Vector2D &Renderable::getMPosition() const {
+const Vector2D &GameObject::getMPosition() const {
     return m_position;
 }
 
-Vector2D Renderable::getMSize() const {
+Vector2D GameObject::getMSize() const {
     return m_size;
 }
 
-void Renderable::setMHasHitBox(bool mHasHitBox) {
+void GameObject::setMHasHitBox(bool mHasHitBox) {
     m_hasHitBox = mHasHitBox;
+}
+
+void GameObject::setMIsDead(bool mIsDead) {
+    m_isDead = mIsDead;
+}
+
+void GameObject::setMText(const char *mText) {
 }

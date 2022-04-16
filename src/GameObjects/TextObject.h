@@ -1,21 +1,25 @@
 //
-// Created by Christoffer Lehre on 09/04/2022.
+// Created by Christoffer Lehre on 14/04/2022.
 //
 
-#ifndef _PROJECTILE_H
-#define _PROJECTILE_H
+#ifndef CPP_EKSAMEN3_TEXTOBJECT_H
+#define CPP_EKSAMEN3_TEXTOBJECT_H
 
+
+#include <utility>
 
 #include "GameObject.h"
-class Projectile : public GameObject {
+class TextObject : public GameObject{
 public:
-    explicit Projectile(const ObjectParamLoader &pParams) : GameObject(pParams) {}
+    TextObject(const ObjectParamLoader& params, const char * text) : GameObject(params), m_text(text){}
 
     void draw() override;
 
     void update() override;
 
     void clean() override;
+
+    void shoot() override;
 
     void nextFrame() override;
 
@@ -31,7 +35,12 @@ public:
 
     Vector2D getMSize() const override;
 
+    void setMText(const char *mText);
+
+private:
+
+    const char *m_text;
 };
 
 
-#endif //_PROJECTILE_H
+#endif //CPP_EKSAMEN3_TEXTOBJECT_H

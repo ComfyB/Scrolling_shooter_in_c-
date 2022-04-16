@@ -10,7 +10,7 @@
 #include "../SupportClasses/ObjectParamLoader.h"
 #include "SDL.h"
 
-class Renderable{
+class GameObject{
 protected:
     Vector2D m_velocity;
     Vector2D m_size;
@@ -31,7 +31,7 @@ protected:
     bool m_hasHitBox;
 
 
-    explicit Renderable(const ObjectParamLoader &pParams) : m_position(pParams.getMPosition()),
+    explicit GameObject(const ObjectParamLoader &pParams) : m_position(pParams.getMPosition()),
                                                             m_velocity(pParams.getMVelocity()),
                                                             m_size(pParams.getMSize()),
                                                             m_textureID(pParams.getMTextureId()),
@@ -69,7 +69,12 @@ public:
 
     virtual Vector2D getMSize() const;
 
+    virtual void setMText(const char *mText);
+
+    void setMIsDead(bool mIsDead);
+
     void setMHasHitBox(bool mHasHitBox);
+
 };
 
 

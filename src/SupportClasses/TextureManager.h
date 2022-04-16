@@ -36,7 +36,7 @@ public:
     TextureManager(TextureManager&&) = delete;
     TextureManager & operator = (TextureManager &&) = delete;
 
-    static auto& Instance(){
+    static auto& instance(){
         static TextureManager textureManager;
         return textureManager;
     }

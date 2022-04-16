@@ -6,5 +6,5 @@
 #include "../SupportClasses/TextureManager.h"
 
 void HealthBar::draw() {
-    TextureManager::Instance().drawBar(m_pos,m_size);
+    TextureManager::instance().drawBar(m_pos, m_size);
 }

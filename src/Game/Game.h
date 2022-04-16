@@ -24,8 +24,8 @@ private:
     Uint32 m_frameStart;
     Uint32 m_frameTime;
 
-    std::vector<std::shared_ptr<Renderable>> m_renderableObjects;
-    std::shared_ptr<Renderable> m_player;
+    std::vector<std::shared_ptr<GameObject>> m_renderableObjects;
+    std::shared_ptr<GameObject> m_player;
 
     GameStateMachine *m_gameStateMachine;
 
@@ -50,14 +50,16 @@ public:
 
     void quit();
 
-    void addGameObject(const std::shared_ptr<Renderable> &newGO);
+    void addGameObject(const std::shared_ptr<GameObject> &newGO);
 
-    [[nodiscard]] const std::vector<std::shared_ptr<Renderable>> &getGameObjects() const;
+    [[nodiscard]] const std::vector<std::shared_ptr<GameObject>> &getGameObjects() const;
 
     void randomEnemy();
 
 
     void renderLoop();
+
+    void cleanState();
 
     GameStateMachine *getMGameStateMachine() const;
 

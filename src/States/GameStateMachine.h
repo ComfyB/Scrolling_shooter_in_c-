@@ -23,7 +23,6 @@ public:
 
 private:
     std::vector<GameState*> m_gameState;
-
 };
 
 
