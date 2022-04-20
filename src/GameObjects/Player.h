@@ -5,14 +5,17 @@
 #ifndef _PLAYER_H
 #define _PLAYER_H
 
+#include <memory>
 #include "GameObject.h"
 #include "HealthBar.h"
 
 class Player : public GameObject {
 private:
-    HealthBar* m_healthBar;
+    std::shared_ptr<HealthBar> m_healthBar;
 public:
-    explicit Player(const ObjectParamLoader &pParams, HealthBar *healthBar) : GameObject(pParams), m_healthBar(healthBar) {}
+    explicit Player(const ObjectParamLoader &pParams, HealthBar *healthBar) : GameObject(pParams), m_healthBar (std::shared_ptr<HealthBar>(new HealthBar(m_lives, m_position, {50, 5}))){
+    }
+
 
     void draw() override ;
 

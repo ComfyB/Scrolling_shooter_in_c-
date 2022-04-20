@@ -9,6 +9,7 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <memory>
 #include "SDL.h"
 #include "SDL_ttf.h"
 #include "SDL_image.h"
@@ -22,21 +23,29 @@
 
 class TextureManager {
 private:
-    TextureManager()=default;
+    TextureManager() = default;
+
     std::map<std::string, SDL_Texture *> m_textureMap;
-    SDL_Window *m_window{};
-    SDL_Renderer *m_renderer{};
-    TTF_Font *m_ttfFont = nullptr;
+    std::shared_ptr<SDL_Window> m_window;
+    std::shared_ptr<SDL_Renderer> m_renderer;
+    /*
+    std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)>m_window{nullptr,SDL_DestroyWindow};
+    std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)> m_renderer{nullptr, SDL_DestroyRenderer};
+*/
+    std::shared_ptr<TTF_Font> m_ttfFont;
     SDL_Color m_yellow = {241, 250, 140};
 
 public:
 
-    TextureManager(const TextureManager&) = delete;
-    TextureManager & operator = (const TextureManager&) = delete;
-    TextureManager(TextureManager&&) = delete;
-    TextureManager & operator = (TextureManager &&) = delete;
+    TextureManager(const TextureManager &) = delete;
 
-    static auto& instance(){
+    TextureManager &operator=(const TextureManager &) = delete;
+
+    TextureManager(TextureManager &&) = delete;
+
+    TextureManager &operator=(TextureManager &&) = delete;
+
+    static auto &instance() {
         static TextureManager textureManager;
         return textureManager;
     }
@@ -55,14 +64,19 @@ public:
 
     void clean();
 
-    SDL_Renderer* getRenderer(){
-        return m_renderer;
+    SDL_Renderer *getRenderer() {
+        return m_renderer.get();
     }
 
+    SDL_Window *getWindow(){
+        return m_window.get();
+    }
 
-    void renderText(const char *text,  Vector2D pos, Vector2D size);
+    void renderText(const char *text, Vector2D pos, Vector2D size);
 
     void drawBar(Vector2D pos, Vector2D size);
+
+    void cleanTextures();
 };
 
 

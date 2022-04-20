@@ -7,22 +7,23 @@
 
 
 #include <vector>
+#include <memory>
 #include "GameState.h"
 
 class GameStateMachine {
 
 public:
-    void changeState(GameState* pState);
+    void changeState(const std::shared_ptr<GameState>& pState);
 
-    void pushState(GameState* pState);
+    void pushState(const std::shared_ptr<GameState>& pState);
 
-    void popState(GameState* pState);
+    void popState(const std::shared_ptr<GameState>& pState);
 
-    [[nodiscard]] const std::vector<GameState *> &getMGameState() const;
+    [[nodiscard]] const std::vector<std::shared_ptr<GameState>> &getMGameState() const;
 
 
 private:
-    std::vector<GameState*> m_gameState;
+    std::vector<std::shared_ptr<GameState>> m_gameState;
 };
 
 

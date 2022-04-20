@@ -10,8 +10,8 @@ void Enemy::draw() {
 }
 
 void Enemy::update() {
-    m_healthBar->setCurrent(m_lives*20);
-    m_healthBar->updatePos(m_position + Vector2D{0,-30});
+    m_healthBar->setCurrent(m_lives * 20);
+    m_healthBar->updatePos(m_position + Vector2D{0, -30});
     GameObject::update();
 }
 
@@ -28,16 +28,9 @@ bool Enemy::isMIsDead() const {
     return GameObject::isMIsDead();
 }
 
+
 void Enemy::setMVelocity(Vector2D velocity) {
     GameObject::setMVelocity(velocity);
-}
-
-void Enemy::checkCollision() {
-    GameObject::checkCollision();
-}
-
-void Enemy::checkOOB() {
-    GameObject::checkOOB();
 }
 
 const Vector2D &Enemy::getMPosition() const {
@@ -46,4 +39,12 @@ const Vector2D &Enemy::getMPosition() const {
 
 Vector2D Enemy::getMSize() const {
     return GameObject::getMSize();
+}
+
+void Enemy::checkCollision() {
+    GameObject::checkCollision();
+}
+
+void Enemy::checkOOB() {
+    GameObject::checkOOB();
 }

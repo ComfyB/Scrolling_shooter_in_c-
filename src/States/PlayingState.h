@@ -18,13 +18,13 @@ public:
     void render() override;
     bool onEnter() override;
     bool onExit() override;
-    std::string getStateID() const override;
+    [[nodiscard]] std::string getStateID() const override;
     [[nodiscard]] std::shared_ptr<GameObject> getPlayer() const;
 
 private:
     int m_score = 0;
-    std::string m_scoreText_string;
     const std::string m_menuID;
+    std::string m_scoreText_string;
     std::shared_ptr<GameObject> m_player;
     std::shared_ptr<GameObject> m_scoreText;
 

@@ -18,7 +18,7 @@
 
 class Game {
 private:
-    Game() {};
+    Game() = default;;
 
     bool m_isRunning;
     Uint32 m_frameStart;
@@ -27,7 +27,7 @@ private:
     std::vector<std::shared_ptr<GameObject>> m_gameObjects;
     std::shared_ptr<GameObject> m_player;
 
-    GameStateMachine *m_gameStateMachine;
+    std::shared_ptr<GameStateMachine> m_gameStateMachine;
 
 
 public:
@@ -61,9 +61,7 @@ public:
 
     void cleanState();
 
-    GameStateMachine *getMGameStateMachine() const;
-
-    [[nodiscard]] Uint32 getFrameTime() const;
+    [[nodiscard]] std::shared_ptr<GameStateMachine> getMGameStateMachine() const;
 
 };
 

@@ -1,4 +1,4 @@
-/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/ninja -DCMAKE_CXX_COMPILER=/opt/homebrew/Cellar/gcc/11.2.0_3/bin/c++-11 -G Ninja /Users/christofferlehre/CLionProjects/cpp_eksamen3
--- Configuring done
--- Generating done
--- Build files have been written to: /Users/christofferlehre/CLionProjects/cpp_eksamen3/cmake-build-debug
+Cannot generate into /Users/christofferlehre/CLionProjects/cpp_eksamen3
+It is already used for project /home/parallels/Desktop/Parallels Shared Folders/Home/CLionProjects/cpP_eksamen3
+
+Please either delete it manually or select another generation directory

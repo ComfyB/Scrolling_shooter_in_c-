@@ -64,6 +64,7 @@ void GameObject::checkOOB() {
 }
 
 void GameObject::clean() {
+    
 }
 
 void GameObject::nextFrame() {

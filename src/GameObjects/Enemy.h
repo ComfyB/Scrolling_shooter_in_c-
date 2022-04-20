@@ -8,13 +8,13 @@
 
 #include "GameObject.h"
 #include "HealthBar.h"
+#include <memory>
 
 class Enemy : public GameObject {
 private:
-    HealthBar *m_healthBar;
+    std::shared_ptr<HealthBar> m_healthBar;
 public:
-    explicit Enemy(const ObjectParamLoader &pParams) : GameObject(pParams)     , m_healthBar (new HealthBar(m_lives * 20 , m_position, {50, 5}))
-    {
+    explicit Enemy(const ObjectParamLoader &pParams) : GameObject(pParams), m_healthBar (std::shared_ptr<HealthBar>(new HealthBar(m_lives, m_position, {50, 5}))){
     }
 
     void draw() override;
@@ -26,7 +26,7 @@ public:
 
     void nextFrame() override;
 
-    bool isMIsDead() const override;
+    [[nodiscard]] bool isMIsDead() const override;
 
     void setMVelocity(Vector2D velocity) override;
 
@@ -34,9 +34,9 @@ public:
 
     void checkOOB() override;
 
-    const Vector2D &getMPosition() const override;
+    [[nodiscard]] const Vector2D &getMPosition() const override;
 
-    Vector2D getMSize() const override;
+    [[nodiscard]] Vector2D getMSize() const override;
 
 };
 

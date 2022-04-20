@@ -8,37 +8,56 @@
 #include "../GameObjects/TextObject.h"
 #include "../GameObjects/UI_Element.h"
 #include "PlayingState.h"
+#include "HighScoreState.h"
 
 void MenuState::update() {
 
     switch (InputHandler::Instance().update()) {
 
         case InputHandler::UP:
-        case InputHandler::DOWN:
-            
+
             if (currentSelection == NEWGAME) {
-                currentSelection = HIGHSCORE;
+                selector->setMPosition({10, 360});
+                currentSelection = ENDGAME;
+            } else if (currentSelection == ENDGAME) {
                 selector->setMPosition({10, 260});
-            } else if(currentSelection == HIGHSCORE){
+                currentSelection = HIGHSCORE;
+            } else if (currentSelection == HIGHSCORE) {
                 selector->setMPosition({10, 180});
                 currentSelection = NEWGAME;
             }
             break;
-        case InputHandler::LEFT:
-            break;
-        case InputHandler::RIGHT:
-            break;
-        case InputHandler::NEWGAME:
-            break;
-        case InputHandler::QUIT:
+        case InputHandler::DOWN:
+
+            if (currentSelection == HIGHSCORE) {
+                selector->setMPosition({10, 360});
+                currentSelection = ENDGAME;
+            } else if (currentSelection == NEWGAME) {
+                selector->setMPosition({10, 260});
+                currentSelection = HIGHSCORE;
+            } else if (currentSelection == ENDGAME) {
+                selector->setMPosition({10, 180});
+                currentSelection = NEWGAME;
+            }
             break;
         case InputHandler::SPACE:
-            if (currentSelection == NEWGAME)
-                Game::Instance().getMGameStateMachine()->changeState(new PlayingState("Playing"));
+        case InputHandler::ENTER:
+            if (currentSelection == NEWGAME) {
+                Game::Instance().getMGameStateMachine()->changeState(
+                        std::shared_ptr<GameState>(new PlayingState("Playing")));
+            } else if (currentSelection == ENDGAME) {
+                Game::Instance().quit();
+            } else if (currentSelection == HIGHSCORE) {
+                Game::Instance().getMGameStateMachine()->changeState(
+                        std::shared_ptr<GameState>(new HighScoreState("HIGHSCORE")));
+            }
             break;
-        case InputHandler::RANDOMENEMY:
-            break;
+        case InputHandler::LEFT:
+        case InputHandler::QUIT:
+        case InputHandler::RIGHT:
+        case InputHandler::NEWGAME:
         case InputHandler::NOTHING:
+        case InputHandler::RANDOMENEMY:
             break;
     }
 }
@@ -55,10 +74,12 @@ bool MenuState::onEnter() {
             std::shared_ptr<GameObject>(new TextObject({{90, 150}, {400, 100}, {0, 0}, "NULL", 1, 1}, "New Game")));
     Game::Instance().addGameObject(
             std::shared_ptr<GameObject>(new TextObject({{90, 250}, {450, 100}, {0, 0}, "NULL", 1, 1}, "Highscore")));
+    Game::Instance().addGameObject(
+            std::shared_ptr<GameObject>(new TextObject({{90, 350}, {200, 100}, {0, 0}, "NULL", 1, 1}, "Exit")));
     selector = std::shared_ptr<GameObject>(new UI_Element({{10, 180}, {64, 64}, {0, 0}, "arrow_anim", 1, 4}));
     Game::Instance().addGameObject(selector);
     currentSelection = NEWGAME;
-    
+
     std::cout << "enter MenuState" << std::endl;
     return true;
 }
@@ -66,6 +87,7 @@ bool MenuState::onEnter() {
 
 bool MenuState::onExit() {
     Game::Instance().cleanState();
+
     std::cout << "exit MenuState" << std::endl;
     return true;
 

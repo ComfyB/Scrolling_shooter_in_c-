@@ -10,9 +10,8 @@
 
 class UI_Element : public GameObject{
 public:
-    UI_Element(const ObjectParamLoader &pParams);
+    explicit UI_Element(const ObjectParamLoader &pParams);
 
-public:
     void draw() override;
 
     void update() override;
@@ -33,9 +32,9 @@ public:
 
     void setMText(const char *mText) override;
 
-    const Vector2D &getMPosition() const override;
+    [[nodiscard]] const Vector2D &getMPosition() const override;
 
-    Vector2D getMSize() const override;
+    [[nodiscard]] Vector2D getMSize() const override;
 };
 
 

@@ -35,7 +35,7 @@ public:
 
     Vector2D getMSize() const override;
 
-    void setMText(const char *mText);
+    void setMText(const char *mText) override;
 
 private:
 

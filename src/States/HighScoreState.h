@@ -6,7 +6,24 @@
 #define CPP_EKSAMEN3_HIGHSCORESTATE_H
 
 
-class HighScoreState {
+#include "../Game/Game.h"
+
+class HighScoreState : public GameState{
+public:
+    explicit HighScoreState(std::string id): m_highscoreID(std::move(id)) {  };
+
+    void update() override;
+
+    void render() override;
+
+    bool onEnter() override;
+
+    bool onExit() override;
+
+    [[nodiscard]] std::string getStateID() const override;
+
+private:
+    const std::string m_highscoreID;
 
 };
 

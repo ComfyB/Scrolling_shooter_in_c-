@@ -35,6 +35,8 @@ public:
     void loadSound(const char *path, const char *id);
 
     void playSound(const char *id, int repeat);
+
+    void clean();
 };
 
 

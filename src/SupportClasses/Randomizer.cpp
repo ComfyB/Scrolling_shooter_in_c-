@@ -6,7 +6,7 @@
 
 int Randomizer::generateRandomNumber(int min, int max) {
     uint32_t seed = SDL_GetTicks();
-    std::mt19937 rng(seed*rand());
+    std::mt19937 rng(seed* rand());
     std::uniform_int_distribution<int> int_dist(min, max);
     return int_dist(rng);
 }

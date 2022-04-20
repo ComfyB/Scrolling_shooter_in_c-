@@ -5,18 +5,17 @@
 #include <iostream>
 #include "GameStateMachine.h"
 
-void GameStateMachine::pushState(GameState *pState) {
+void GameStateMachine::pushState(const std::shared_ptr<GameState>& pState) {
     m_gameState.push_back(pState);
     m_gameState.back()->onEnter();
 }
 
-void GameStateMachine::changeState(GameState *pState) {
+void GameStateMachine::changeState(const std::shared_ptr<GameState>& pState) {
     if (!m_gameState.empty()) {
         if (m_gameState.back()->getStateID() == pState->getStateID()) {
             return;
         }
         if (m_gameState.back()->onExit()) {
-            delete m_gameState.back();
             m_gameState.pop_back();
         }
     }
@@ -25,15 +24,14 @@ void GameStateMachine::changeState(GameState *pState) {
 }
 
 
-void GameStateMachine::popState(GameState *pState) {
+void GameStateMachine::popState(const std::shared_ptr<GameState>& pState) {
     if (!m_gameState.empty()) {
         if (m_gameState.back()->onExit()) {
-            delete m_gameState.back();
             m_gameState.pop_back();
         }
     }
 }
 
-const std::vector<GameState *> &GameStateMachine::getMGameState() const {
+const std::vector<std::shared_ptr<GameState>> &GameStateMachine::getMGameState() const {
     return m_gameState;
 }

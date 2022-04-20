@@ -10,15 +10,15 @@ class Vector2D {
 public:
     Vector2D(int x, int y) : m_x(x), m_y(y) {};
 
-    int getX() const { return m_x; }
+    [[nodiscard]] int getX() const { return m_x; }
 
-    int getY() const { return m_y; }
+    [[nodiscard]] int getY() const { return m_y; }
 
     void setX(int x) { m_x = x; }
 
     void setY(int y) { m_y = y; }
 
-    int length() const {
+    [[nodiscard]] int length() const {
         return m_x * m_x + m_y * m_y;
     }
 
@@ -61,8 +61,7 @@ public:
     //normalization -> important for gamelogic etc
 
     void normalize() {
-        int tmp = 1;
-        tmp = length();
+        int tmp  = length();
         if (tmp > 0) {
             (*this) *= tmp / 1;
         }

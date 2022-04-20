@@ -28,20 +28,18 @@ void PlayingState::keyInputs() {
         case InputHandler::RIGHT:
             m_player->setMVelocity({2, 0});
             break;
-        case InputHandler::NEWGAME:
-            break;
         case InputHandler::QUIT:
-            Game::Instance().getMGameStateMachine()->changeState(new MenuState("Menu"));
-
+            Game::Instance().getMGameStateMachine()->changeState(std::shared_ptr<GameState>(new MenuState("Menu")));
             break;
         case InputHandler::SPACE:
             m_player->shoot();
             break;
         case InputHandler::RANDOMENEMY:
-            break;
+        case InputHandler::NEWGAME:
         case InputHandler::NOTHING:
+        case InputHandler::ENTER:
             break;
-    };
+    }
 }
 
 void PlayingState::render() {

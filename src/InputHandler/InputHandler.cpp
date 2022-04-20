@@ -12,12 +12,10 @@ void InputHandler::init() {
 InputHandler::keys InputHandler::update() {
     keyStates = SDL_GetKeyboardState(nullptr);
 
-    SDL_Event event;
-
     while (SDL_PollEvent(&event)) {
         if (event.type == SDL_QUIT)
             Game::Instance().quit();
-        else{
+        else {
             if (keyStates[SDL_SCANCODE_W] | keyStates[SDL_SCANCODE_UP]) {
                 return UP;
             }
@@ -29,6 +27,9 @@ InputHandler::keys InputHandler::update() {
             }
             if (keyStates[SDL_SCANCODE_D] | keyStates[SDL_SCANCODE_RIGHT]) {
                 return RIGHT;
+            }
+            if (keyStates[SDL_SCANCODE_RETURN]) {
+                return ENTER;
             }
             if (keyStates[SDL_SCANCODE_SPACE]) {
                 return SPACE;

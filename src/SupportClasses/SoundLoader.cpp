@@ -17,3 +17,12 @@ void SoundLoader::loadSound(const char *path, const char *id) {
 void SoundLoader::playSound(const char *id, int repeat) {
     Mix_PlayMusic(soundMap[id], repeat);
 }
+
+void SoundLoader::clean(){
+    for (const auto& so: soundMap){
+        Mix_FreeMusic(so.second);
+    }
+    soundMap.clear();
+
+}
+
