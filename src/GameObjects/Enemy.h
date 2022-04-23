@@ -9,12 +9,13 @@
 #include "GameObject.h"
 #include "HealthBar.h"
 #include <memory>
+#include <utility>
 
 class Enemy : public GameObject {
 private:
     std::shared_ptr<HealthBar> m_healthBar;
 public:
-    explicit Enemy(const ObjectParamLoader &pParams) : GameObject(pParams), m_healthBar (std::shared_ptr<HealthBar>(new HealthBar(m_lives, m_position, {50, 5}))){
+    explicit Enemy(const ObjectParamLoader &pParams,std::shared_ptr<HealthBar> healthBar) : GameObject(pParams), m_healthBar (std::move(healthBar)){
     }
 
     void draw() override;

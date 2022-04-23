@@ -10,8 +10,6 @@
 class InputHandler {
 private:
     InputHandler() = default;
-
-
     const Uint8 *keyStates;
     SDL_Event event;
 

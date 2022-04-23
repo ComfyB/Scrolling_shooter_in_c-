@@ -7,13 +7,14 @@
 
 #include <string>
 #include <map>
+#include <memory>
 #include "SDL_mixer.h"
 
 class SoundLoader {
 private:
     SoundLoader() = default;
 
-    std::map<std::string, Mix_Music *> soundMap;
+    std::map<std::string, std::shared_ptr<Mix_Music>> m_soundMap;
 
 public:
 

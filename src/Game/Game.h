@@ -22,13 +22,12 @@ private:
 
     bool m_isRunning;
     Uint32 m_frameStart;
-    Uint32 m_frameTime;
+    Uint32 m_timeFromLast;
 
     std::vector<std::shared_ptr<GameObject>> m_gameObjects;
     std::shared_ptr<GameObject> m_player;
-
+    std::unique_ptr<TextureManager> m_textureManager;
     std::shared_ptr<GameStateMachine> m_gameStateMachine;
-
 
 public:
     Game(const Game &) = delete;
@@ -50,18 +49,19 @@ public:
 
     void quit();
 
-    void addGameObject(const std::shared_ptr<GameObject> &newGO);
-
-    [[nodiscard]] const std::vector<std::shared_ptr<GameObject>> &getGameObjects() const;
-
     void randomEnemy();
-
 
     void renderLoop();
 
     void cleanState();
 
+    void addGameObject(const std::shared_ptr<GameObject> &newGO);
+
+    [[nodiscard]] const std::vector<std::shared_ptr<GameObject>> &getGameObjects() const;
+
     [[nodiscard]] std::shared_ptr<GameStateMachine> getMGameStateMachine() const;
+
+    const std::unique_ptr<TextureManager> &getMTextureManager() const;
 
 };
 

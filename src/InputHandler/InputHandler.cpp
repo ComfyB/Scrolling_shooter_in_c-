@@ -41,9 +41,8 @@ InputHandler::keys InputHandler::update() {
                 return RANDOMENEMY;
             }
         }
-        return NOTHING;
-
     }
+    return NOTHING;
 }
 
 void InputHandler::clean() {

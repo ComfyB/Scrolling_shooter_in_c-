@@ -10,53 +10,55 @@
 #include "../States/MenuState.h"
 
 
-#define DELAY_TIME 60   //about 60fps
+#define UPDATE_TICK_TIME 16   //about 60tick
 
 void Game::init() {
+    //m_textureManager = std::make_unique<TextureManager, clean()>()
     TextureManager::instance().init();
-
     SoundLoader::instance().init();
 
     m_gameStateMachine = std::make_shared<GameStateMachine>();
-    m_gameStateMachine->pushState(std::shared_ptr<GameState>(std::make_shared<MenuState>("Menu")));
-
+    m_gameStateMachine->pushState(std::make_shared<MenuState>("Menu"));
+    m_timeFromLast = 16;
     m_isRunning = true;
     Game::loop();
 }
 
 void Game::randomEnemy() {
-    addGameObject(std::shared_ptr<GameObject>(new Enemy(
+    addGameObject(std::make_shared<GameObject>(Enemy(
             {{Randomizer::generateRandomNumber(0, WINDOWWIDTH), Randomizer::generateRandomNumber(0, 50)}, {64, 64},
-             {3, 1}, "enemy", 3, 4})));
+             {3, 1}, "enemy", 3, 4}, std::make_shared<HealthBar>(20, Vector2D{20, 20}, Vector2D{20, 20}))));
 }
 
 
 void Game::loop() {
 
     while (m_isRunning) {
-        m_frameStart = SDL_GetTicks();
 
         SDL_RenderClear(TextureManager::instance().getRenderer());
         m_gameStateMachine->getMGameState().back()->update();
         renderLoop();
-
         SDL_PumpEvents();
         SDL_RenderPresent(TextureManager::instance().getRenderer());
-
-        m_frameTime = SDL_GetTicks() - m_frameStart;
-        if (m_frameTime < DELAY_TIME) {
-            SDL_Delay((int) (DELAY_TIME - m_frameTime));
-        }
 
     }
 
 }
 
 void Game::renderLoop() {
-    std::for_each(m_gameObjects.begin(), m_gameObjects.end(), [](std::shared_ptr <GameObject> &ob) { ob->update(); });
-    std::for_each(m_gameObjects.begin(), m_gameObjects.end(), [](std::shared_ptr <GameObject> &ob) { ob->draw(); });
+    m_frameStart = SDL_GetTicks64();
+    if (m_frameStart > (m_timeFromLast + UPDATE_TICK_TIME)) {
+        for (const auto &ob: m_gameObjects) {
+            ob->update();
+        }
+        m_timeFromLast = m_frameStart;
+    }
+    for (const auto &ob: m_gameObjects) {
+        ob->draw();
+    }
+
     m_gameObjects.erase(std::remove_if(m_gameObjects.begin(), m_gameObjects.end(),
-                                       [](auto const &ob) {
+                                       [](auto const ob) {
                                            if (ob->isMIsDead() && ob != Instance().m_player)
                                                return true;
                                        }), m_gameObjects.end());
@@ -64,21 +66,22 @@ void Game::renderLoop() {
 
 void Game::quit() {
     m_isRunning = false;
+    TextureManager::instance().clean();
     SoundLoader::instance().clean();
     Mix_Quit();
     SDL_Quit();
 }
 
 
-void Game::addGameObject(const std::shared_ptr <GameObject> &pGO) {
+void Game::addGameObject(const std::shared_ptr<GameObject> &pGO) {
     m_gameObjects.emplace_back(pGO);
 }
 
-const std::vector <std::shared_ptr<GameObject>> &Game::getGameObjects() const {
+const std::vector<std::shared_ptr<GameObject>> &Game::getGameObjects() const {
     return m_gameObjects;
 }
 
-std::shared_ptr <GameStateMachine> Game::getMGameStateMachine() const {
+std::shared_ptr<GameStateMachine> Game::getMGameStateMachine() const {
     return m_gameStateMachine;
 }
 
@@ -88,5 +91,9 @@ void Game::cleanState() {
         obj->clean();
     }
     m_gameObjects.clear();
+}
+
+const std::unique_ptr<TextureManager> &Game::getMTextureManager() const {
+    return m_textureManager;
 }
 

@@ -25,7 +25,7 @@ class TextureManager {
 private:
     TextureManager() = default;
 
-    std::map<std::string, SDL_Texture *> m_textureMap;
+    std::map<std::string, std::shared_ptr<SDL_Texture >> m_textureMap;
     std::shared_ptr<SDL_Window> m_window;
     std::shared_ptr<SDL_Renderer> m_renderer;
     /*
@@ -33,7 +33,7 @@ private:
     std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)> m_renderer{nullptr, SDL_DestroyRenderer};
 */
     std::shared_ptr<TTF_Font> m_ttfFont;
-    SDL_Color m_yellow = {241, 250, 140};
+
 
 public:
 
@@ -52,7 +52,7 @@ public:
 
     bool init();
 
-    bool load(const char *path, const char *id);
+    bool load(const std::string &path, const std::string &id);
 
     void drawFrame(const std::string &id, Vector2D pos, Vector2D size, int currentFrame, int currentRow,
                    SDL_Renderer *pRenderer,
@@ -68,15 +68,17 @@ public:
         return m_renderer.get();
     }
 
-    SDL_Window *getWindow(){
+    SDL_Window *getWindow() {
         return m_window.get();
     }
 
-    void renderText(const char *text, Vector2D pos, Vector2D size);
+    void renderText(const char *text,Vector2D pos, Vector2D size);
 
     void drawBar(Vector2D pos, Vector2D size);
 
     void cleanTextures();
+
+    void cleanAt(const std::string& key);
 };
 
 

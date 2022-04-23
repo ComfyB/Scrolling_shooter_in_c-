@@ -54,7 +54,7 @@ bool PlayingState::onEnter() {
     SoundLoader::instance().loadSound("../sound/shoot.wav", "shoot");
     m_scoreText = std::shared_ptr<GameObject>(new TextObject({{600, 30}, {120, 30}, {0, 0}, "NULL", 1, 1}, "1"));
     m_scoreText->setMHasHitBox(false);
-    m_player = std::shared_ptr<GameObject>(new Player({{10, 300}, {50, 64}, {1, 1}, "ship", 5, 4}, new HealthBar{80, {0, 0}, {80, 15}}));
+    m_player = std::make_shared<GameObject>(Player({{10, 300}, {50, 64}, {1, 1}, "ship", 5, 4}, std::make_shared<HealthBar>( HealthBar{80, {0, 0}, {80, 15}})));
     Game::Instance().addGameObject(m_scoreText);
     Game::Instance().addGameObject(m_player);
     Game::Instance().randomEnemy();
@@ -63,6 +63,7 @@ bool PlayingState::onEnter() {
 
 bool PlayingState::onExit() {
     Game::Instance().cleanState();
+    SoundLoader::instance().clean();
     return true;
 }
 

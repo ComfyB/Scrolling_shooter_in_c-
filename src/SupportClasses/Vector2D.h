@@ -1,6 +1,7 @@
 //
 // Created by Christoffer Lehre on 03/04/2022.
 //
+//
 
 #ifndef CPP_EKSAMEN2_VECTOR2D_H
 #define CPP_EKSAMEN2_VECTOR2D_H

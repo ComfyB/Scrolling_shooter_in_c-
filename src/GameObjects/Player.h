@@ -6,6 +6,7 @@
 #define _PLAYER_H
 
 #include <memory>
+#include <utility>
 #include "GameObject.h"
 #include "HealthBar.h"
 
@@ -13,7 +14,7 @@ class Player : public GameObject {
 private:
     std::shared_ptr<HealthBar> m_healthBar;
 public:
-    explicit Player(const ObjectParamLoader &pParams, HealthBar *healthBar) : GameObject(pParams), m_healthBar (std::shared_ptr<HealthBar>(new HealthBar(m_lives, m_position, {50, 5}))){
+    explicit Player(const ObjectParamLoader &pParams, std::shared_ptr<HealthBar>  healthBar) : GameObject(pParams), m_healthBar(std::move(healthBar)){
     }
 
 
@@ -35,9 +36,9 @@ public:
 
     void checkOOB() override;
 
-    const Vector2D &getMPosition() const override;
+    [[nodiscard]] const Vector2D &getMPosition() const override;
 
-    Vector2D getMSize() const override;
+    [[nodiscard]] Vector2D getMSize() const override;
 
 
 };

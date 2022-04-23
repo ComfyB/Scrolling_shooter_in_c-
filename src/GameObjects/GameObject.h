@@ -36,7 +36,7 @@ protected:
                                                             m_size(pParams.getMSize()),
                                                             m_textureID(pParams.getMTextureId()),
                                                             m_frames(pParams.getMNumFrames()),
-                                                            m_lives(pParams.getMLives()) {
+                                                             m_lives(pParams.getMLives()) {
         m_isDead = false;
         m_currentRow = 0;
         m_rows = 0;
@@ -51,8 +51,6 @@ public:
 
     virtual void clean();
 
-    virtual void shoot();
-
     virtual void nextFrame();
 
 
@@ -66,7 +64,7 @@ public:
 
     [[nodiscard]] virtual const Vector2D &getMPosition() const;
 
-    virtual Vector2D getMSize() const;
+    [[nodiscard]] virtual Vector2D getMSize() const;
 
     virtual void setMText(const char *mText);
 
@@ -76,6 +74,7 @@ public:
 
     void setMPosition(const Vector2D &mPosition);
 
+    virtual void shoot(Vector2D velocity, Vector2D offset);
 };
 
 

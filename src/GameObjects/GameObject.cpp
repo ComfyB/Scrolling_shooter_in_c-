@@ -15,12 +15,11 @@ void GameObject::draw() {
 }
 
 
-void GameObject::shoot() {
+void GameObject::shoot(Vector2D velocity, Vector2D offset) {
     currentTime = SDL_GetTicks64();
-    if (currentTime > lastTime + 100) {
+    if (currentTime > lastTime + 200) {
         Game::Instance().addGameObject(std::shared_ptr<GameObject>(
-
-                new Projectile({m_position + Vector2D{20, -60}, {5, 20}, {0, -5}, "bullet", 1,
+                new Projectile({m_position + offset, {5, 20}, velocity, "bullet", 1,
                                 1})));
         // SoundLoader::instance().playSound("shoot",1);
 
@@ -29,15 +28,13 @@ void GameObject::shoot() {
 }
 
 void GameObject::update() {
-
     nextFrame();
     //make sure the object can´t leave screen
     checkOOB();
     if (m_hasHitBox)
         checkCollision();
+
     m_position = m_position + m_velocity;
-
-
 }
 
 
@@ -64,7 +61,7 @@ void GameObject::checkOOB() {
 }
 
 void GameObject::clean() {
-    
+    TextureManager::instance().cleanAt(m_textureID);
 }
 
 void GameObject::nextFrame() {

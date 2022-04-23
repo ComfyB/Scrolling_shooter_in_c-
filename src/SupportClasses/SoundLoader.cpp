@@ -11,18 +11,14 @@ void SoundLoader::init() {
 }
 
 void SoundLoader::loadSound(const char *path, const char *id) {
-    soundMap[id] = Mix_LoadMUS(path);
+    m_soundMap[id] = std::shared_ptr<Mix_Music>(Mix_LoadMUS(path), Mix_FreeMusic);
 }
 
 void SoundLoader::playSound(const char *id, int repeat) {
-    Mix_PlayMusic(soundMap[id], repeat);
+    Mix_PlayMusic(m_soundMap.at(id).get(), repeat);
 }
 
 void SoundLoader::clean(){
-    for (const auto& so: soundMap){
-        Mix_FreeMusic(so.second);
-    }
-    soundMap.clear();
-
+    m_soundMap.clear();
 }
 
