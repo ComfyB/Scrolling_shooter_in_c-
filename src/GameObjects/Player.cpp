@@ -48,10 +48,12 @@ Vector2D Player::getMSize() const {
     return GameObject::getMSize();
 }
 
-void Player::shoot() {
+void Player::setMText(const char *mText) {
+    GameObject::setMText(mText);
+}
 
-
-    GameObject::shoot();
+void Player::shoot(Vector2D velocity, Vector2D offset) {
+    GameObject::shoot(velocity, offset);
 }
 
 

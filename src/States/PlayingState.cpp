@@ -32,7 +32,7 @@ void PlayingState::keyInputs() {
             Game::Instance().getMGameStateMachine()->changeState(std::shared_ptr<GameState>(new MenuState("Menu")));
             break;
         case InputHandler::SPACE:
-            m_player->shoot();
+            m_player->shoot({0,-8},{30,-40});
             break;
         case InputHandler::RANDOMENEMY:
         case InputHandler::NEWGAME:

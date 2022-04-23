@@ -17,9 +17,6 @@ void TextObject::clean() {
     GameObject::clean();
 }
 
-void TextObject::shoot() {
-    GameObject::shoot();
-}
 
 void TextObject::nextFrame() {
     GameObject::nextFrame();
@@ -51,4 +48,8 @@ Vector2D TextObject::getMSize() const {
 
 void TextObject::setMText(const char *mText) {
     m_text = mText;
+}
+
+void TextObject::shoot(Vector2D velocity, Vector2D offset) {
+    GameObject::shoot(velocity, offset);
 }

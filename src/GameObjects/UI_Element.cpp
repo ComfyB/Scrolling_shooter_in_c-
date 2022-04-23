@@ -16,9 +16,7 @@ void UI_Element::clean() {
     GameObject::clean();
 }
 
-void UI_Element::shoot() {
-    GameObject::shoot();
-}
+
 
 void UI_Element::nextFrame() {
     GameObject::nextFrame();
@@ -54,4 +52,8 @@ UI_Element::UI_Element(const ObjectParamLoader &pParams) : GameObject(pParams) {
 
 void UI_Element::setMText(const char *mText) {
     GameObject::setMText(mText);
+}
+
+void UI_Element::shoot(Vector2D velocity, Vector2D offset) {
+    GameObject::shoot(velocity, offset);
 }

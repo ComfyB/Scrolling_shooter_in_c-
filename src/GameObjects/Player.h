@@ -24,7 +24,9 @@ public:
 
     void clean() override ;
 
-    void shoot() override;
+    void setMText(const char *mText) override;
+
+    void shoot(Vector2D velocity, Vector2D offset) override;
 
     void nextFrame() override;
 
