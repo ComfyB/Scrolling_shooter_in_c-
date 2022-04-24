@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 05/04/2022.
+// Created by 1024 on 05/04/2022.
 //
 
 #ifndef _GAME_H
@@ -38,7 +38,7 @@ public:
 
     Game &operator=(Game &&) = delete;
 
-    static auto &Instance() {
+    static auto &instance() {
         static Game game;
         return game;
     }

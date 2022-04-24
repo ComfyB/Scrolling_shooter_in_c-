@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 15/04/2022.
+// Created by 1024 on 15/04/2022.
 //
 
 #ifndef CPP_EKSAMEN3_UI_ELEMENT_H
@@ -8,7 +8,7 @@
 
 #include "GameObject.h"
 
-class UI_Element : public GameObject{
+class UI_Element : public GameObject {
 public:
     explicit UI_Element(const ObjectParamLoader &pParams);
 

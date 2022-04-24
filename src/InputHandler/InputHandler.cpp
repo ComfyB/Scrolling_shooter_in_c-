@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 05/04/2022.
+// Created by 1024 on 05/04/2022.
 //
 
 #include "InputHandler.h"
@@ -14,18 +14,18 @@ InputHandler::keys InputHandler::update() {
 
     while (SDL_PollEvent(&event)) {
         if (event.type == SDL_QUIT)
-            Game::Instance().quit();
+            Game::instance().quit();
         else {
-            if (keyStates[SDL_SCANCODE_W] | keyStates[SDL_SCANCODE_UP]) {
+            if (keyStates[SDL_SCANCODE_W] || keyStates[SDL_SCANCODE_UP]) {
                 return UP;
             }
-            if (keyStates[SDL_SCANCODE_A] | keyStates[SDL_SCANCODE_LEFT]) {
+            if (keyStates[SDL_SCANCODE_A] || keyStates[SDL_SCANCODE_LEFT]) {
                 return LEFT;
             }
-            if (keyStates[SDL_SCANCODE_S] | keyStates[SDL_SCANCODE_DOWN]) {
+            if (keyStates[SDL_SCANCODE_S] || keyStates[SDL_SCANCODE_DOWN]) {
                 return DOWN;
             }
-            if (keyStates[SDL_SCANCODE_D] | keyStates[SDL_SCANCODE_RIGHT]) {
+            if (keyStates[SDL_SCANCODE_D] || keyStates[SDL_SCANCODE_RIGHT]) {
                 return RIGHT;
             }
             if (keyStates[SDL_SCANCODE_RETURN]) {

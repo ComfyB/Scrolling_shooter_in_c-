@@ -1,14 +1,12 @@
 
 //
-// Created by Christoffer Lehre on 03/04/2022.
+// Created by 1024 on 03/04/2022.
 //
 
 #include "TextureManager.h"
 
 bool TextureManager::init() {
-    SDL_Init(SDL_INIT_EVENTS);
-    SDL_Init(SDL_INIT_VIDEO);
-    SDL_Init(SDL_INIT_TIMER);
+    SDL_InitSubSystem(SDL_INIT_EVENTS | SDL_INIT_VIDEO | SDL_INIT_TIMER);
     m_window = std::shared_ptr<SDL_Window>(
             SDL_CreateWindow("SpaceWars", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WINDOWWIDTH,
                              WINDOWHEIGHT,
@@ -43,7 +41,7 @@ bool TextureManager::init() {
 }
 
 void
-TextureManager::renderText(const char *text, Vector2D pos,  Vector2D size) {
+TextureManager::renderText(const char *text, Vector2D pos, Vector2D size) {
 
     SDL_Color m_yellow{241, 250, 140};
     auto textRect = new SDL_Rect{pos.getX(), pos.getY(), size.getX(), size.getY()};

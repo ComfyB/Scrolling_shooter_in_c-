@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 03/04/2022.
+// Created by 1024 on 03/04/2022.
 //
 
 #ifndef CPP_EKSAMEN2_TEXTUREMANAGER_H
@@ -72,13 +72,13 @@ public:
         return m_window.get();
     }
 
-    void renderText(const char *text,Vector2D pos, Vector2D size);
+    void renderText(const char *text, Vector2D pos, Vector2D size);
 
     void drawBar(Vector2D pos, Vector2D size);
 
     void cleanTextures();
 
-    void cleanAt(const std::string& key);
+    void cleanAt(const std::string &key);
 };
 
 

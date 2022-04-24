@@ -1,12 +1,12 @@
 //
-// Created by Christoffer Lehre on 14/04/2022.
+// Created by 1024 on 14/04/2022.
 //
 
 #include "TextObject.h"
 #include "../SupportClasses/TextureManager.h"
 
 void TextObject::draw() {
-    TextureManager::instance().renderText(m_text,m_position,m_size);
+    TextureManager::instance().renderText(m_text, m_position, m_size);
 }
 
 

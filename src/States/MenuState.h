@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 10/04/2022.
+// Created by 1024 on 10/04/2022.
 //
 
 #ifndef CPP_EKSAMEN3_MENUSTATE_H
@@ -12,20 +12,26 @@
 #include "GameState.h"
 #include "../GameObjects/GameObject.h"
 
-class MenuState : public GameState{
+class MenuState : public GameState {
 public:
-    explicit MenuState(std::string id): m_menuID(std::move(id)) {
+    explicit MenuState(std::string id) : m_menuID(std::move(id)) {
         currentSelection = NEWGAME;
     };
+
     ~MenuState() override = default;
+
     void update() override;
+
     void render() override;
+
     bool onEnter() override;
+
     bool onExit() override;
+
     [[nodiscard]]  std::string getStateID() const override;
 
 private:
-    enum menuItem{
+    enum menuItem {
         NEWGAME = 1021, HIGHSCORE = 1022, ENDGAME = 1023
     };
     std::shared_ptr<GameObject> selector;

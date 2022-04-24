@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 05/04/2022.
+// Created by 1024 on 05/04/2022.
 //
 
 #ifndef _PLAYER_H
@@ -14,15 +14,17 @@ class Player : public GameObject {
 private:
     std::shared_ptr<HealthBar> m_healthBar;
 public:
-    explicit Player(const ObjectParamLoader &pParams, std::shared_ptr<HealthBar>  healthBar) : GameObject(pParams), m_healthBar(std::move(healthBar)){
+    explicit Player(const ObjectParamLoader &pParams, std::shared_ptr<HealthBar> healthBar) : GameObject(pParams),
+                                                                                              m_healthBar(std::move(
+                                                                                                      healthBar)) {
     }
 
 
-    void draw() override ;
+    void draw() override;
 
-    void update() override ;
+    void update() override;
 
-    void clean() override ;
+    void clean() override;
 
     void setMText(const char *mText) override;
 

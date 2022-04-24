@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 09/04/2022.
+// Created by 1024 on 09/04/2022.
 //
 
 #ifndef _PROJECTILE_H
@@ -7,6 +7,7 @@
 
 
 #include "GameObject.h"
+
 class Projectile : public GameObject {
 public:
     explicit Projectile(const ObjectParamLoader &pParams) : GameObject(pParams) {}

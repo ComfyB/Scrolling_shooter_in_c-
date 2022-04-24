@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 10/04/2022.
+// Created by 1024 on 10/04/2022.
 //
 
 #include <charconv>
@@ -15,7 +15,7 @@ void PlayingState::update() {
 }
 
 void PlayingState::keyInputs() {
-    switch (InputHandler::Instance().update()){
+    switch (InputHandler::Instance().update()) {
         case InputHandler::UP:
             m_player->setMVelocity({0, -2});
             break;
@@ -29,10 +29,10 @@ void PlayingState::keyInputs() {
             m_player->setMVelocity({2, 0});
             break;
         case InputHandler::QUIT:
-            Game::Instance().getMGameStateMachine()->changeState(std::shared_ptr<GameState>(new MenuState("Menu")));
+            Game::instance().getMGameStateMachine()->changeState(std::shared_ptr<GameState>(new MenuState("Menu")));
             break;
         case InputHandler::SPACE:
-            m_player->shoot({0,-8},{30,-40});
+            m_player->shoot({0, -8}, {30, -40});
             break;
         case InputHandler::RANDOMENEMY:
         case InputHandler::NEWGAME:
@@ -47,22 +47,22 @@ void PlayingState::render() {
 }
 
 bool PlayingState::onEnter() {
-
     TextureManager::instance().load("../img/ship3.png", "ship");
     TextureManager::instance().load("../img/UFO.png", "enemy");
     TextureManager::instance().load("../img/bullet.png", "bullet");
     SoundLoader::instance().loadSound("../sound/shoot.wav", "shoot");
     m_scoreText = std::shared_ptr<GameObject>(new TextObject({{600, 30}, {120, 30}, {0, 0}, "NULL", 1, 1}, "1"));
     m_scoreText->setMHasHitBox(false);
-    m_player = std::make_shared<GameObject>(Player({{10, 300}, {50, 64}, {1, 1}, "ship", 5, 4}, std::make_shared<HealthBar>( HealthBar{80, {0, 0}, {80, 15}})));
-    Game::Instance().addGameObject(m_scoreText);
-    Game::Instance().addGameObject(m_player);
-    Game::Instance().randomEnemy();
+    m_player = std::make_shared<GameObject>(Player({{10, 300}, {50, 64}, {1, 1}, "ship", 5, 4},
+                                                   std::make_shared<HealthBar>(HealthBar{80, {0, 0}, {80, 15}})));
+    Game::instance().addGameObject(m_scoreText);
+    Game::instance().addGameObject(m_player);
+    Game::instance().randomEnemy();
     return true;
 }
 
 bool PlayingState::onExit() {
-    Game::Instance().cleanState();
+    Game::instance().cleanState();
     SoundLoader::instance().clean();
     return true;
 }
@@ -70,6 +70,7 @@ bool PlayingState::onExit() {
 std::string PlayingState::getStateID() const {
     return m_menuID;
 }
+
 std::shared_ptr<GameObject> PlayingState::getPlayer() const {
     return m_player;
 }

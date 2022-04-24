@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 05/04/2022.
+// Created by 1024 on 05/04/2022.
 //
 
 #ifndef _GAMEOBJECT_H
@@ -10,7 +10,7 @@
 #include "../SupportClasses/ObjectParamLoader.h"
 #include "SDL.h"
 
-class GameObject{
+class GameObject {
 protected:
     Vector2D m_velocity;
     Vector2D m_size;
@@ -36,13 +36,14 @@ protected:
                                                             m_size(pParams.getMSize()),
                                                             m_textureID(pParams.getMTextureId()),
                                                             m_frames(pParams.getMNumFrames()),
-                                                             m_lives(pParams.getMLives()) {
+                                                            m_lives(pParams.getMLives()) {
         m_isDead = false;
         m_currentRow = 0;
         m_rows = 0;
         m_currentFrame = 0;
         m_hasHitBox = true;
     }
+
 public:
 
     virtual void draw();
@@ -54,11 +55,11 @@ public:
     virtual void nextFrame();
 
 
-    [[nodiscard]] virtual bool isMIsDead() const ;
+    [[nodiscard]] virtual bool isMIsDead() const;
 
     virtual void setMVelocity(Vector2D velocity);
 
-    virtual void checkCollision() ;
+    virtual void checkCollision();
 
     virtual void checkOOB();
 

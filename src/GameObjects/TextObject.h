@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 14/04/2022.
+// Created by 1024 on 14/04/2022.
 //
 
 #ifndef CPP_EKSAMEN3_TEXTOBJECT_H
@@ -9,9 +9,10 @@
 #include <utility>
 
 #include "GameObject.h"
-class TextObject : public GameObject{
+
+class TextObject : public GameObject {
 public:
-    TextObject(const ObjectParamLoader& params, const char * text) : GameObject(params), m_text(text){}
+    TextObject(const ObjectParamLoader &params, const char *text) : GameObject(params), m_text(text) {}
 
     void draw() override;
 

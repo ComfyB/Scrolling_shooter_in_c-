@@ -1,5 +1,5 @@
-//
-// Created by Christoffer Lehre on 05/04/2022.
+//Game management class which holds instances of the helper classes and iterate methods for gameplay and rendering.
+//this class holds the gameobjects where they are needed.
 //
 
 
@@ -10,10 +10,10 @@
 #include "../States/MenuState.h"
 
 
-#define UPDATE_TICK_TIME 16   //about 60tick
+#define UPDATE_TICK_TIME 16   //about 60tick - controls how often the gameobjects should be updated. uncaps framerate.
 
+//init important classes and variables so that the t
 void Game::init() {
-    //m_textureManager = std::make_unique<TextureManager, clean()>()
     TextureManager::instance().init();
     SoundLoader::instance().init();
 
@@ -23,6 +23,7 @@ void Game::init() {
     m_isRunning = true;
     Game::loop();
 }
+
 
 void Game::randomEnemy() {
     addGameObject(std::make_shared<GameObject>(Enemy(
@@ -47,7 +48,7 @@ void Game::loop() {
 
 void Game::renderLoop() {
     m_frameStart = SDL_GetTicks64();
-    if (m_frameStart > (m_timeFromLast + UPDATE_TICK_TIME)) {
+    if (m_frameStart >= (m_timeFromLast + UPDATE_TICK_TIME)) {
         for (const auto &ob: m_gameObjects) {
             ob->update();
         }
@@ -58,9 +59,10 @@ void Game::renderLoop() {
     }
 
     m_gameObjects.erase(std::remove_if(m_gameObjects.begin(), m_gameObjects.end(),
-                                       [](auto const ob) {
-                                           if (ob->isMIsDead() && ob != Instance().m_player)
+                                       [](auto &ob) {
+                                           if (ob->isMIsDead() && ob != instance().m_player)
                                                return true;
+                                           return false;
                                        }), m_gameObjects.end());
 }
 

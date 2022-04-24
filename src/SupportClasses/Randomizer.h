@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 08/04/2022.
+// Created by 1024 on 08/04/2022.
 //
 
 #ifndef _RANDOMIZER_H

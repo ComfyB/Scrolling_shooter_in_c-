@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 05/04/2022.
+// Created by 1024 on 05/04/2022.
 //
 
 #include "Player.h"
@@ -10,8 +10,8 @@ void Player::draw() {
 }
 
 void Player::update() {
-    m_healthBar->setCurrent(14*m_lives);
-    m_healthBar->updatePos(m_position + Vector2D{-10,-30});
+    m_healthBar->setCurrent(14 * m_lives);
+    m_healthBar->updatePos(m_position + Vector2D{-10, -30});
     GameObject::update();
 }
 

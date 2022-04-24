@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 03/04/2022.
+// Created by 1024 on 03/04/2022.
 //
 //
 
@@ -62,7 +62,7 @@ public:
     //normalization -> important for gamelogic etc
 
     void normalize() {
-        int tmp  = length();
+        int tmp = length();
         if (tmp > 0) {
             (*this) *= tmp / 1;
         }

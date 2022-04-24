@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 05/04/2022.
+// Created by 1024 on 05/04/2022.
 //
 
 #ifndef _H_ENEMY_H
@@ -15,7 +15,9 @@ class Enemy : public GameObject {
 private:
     std::shared_ptr<HealthBar> m_healthBar;
 public:
-    explicit Enemy(const ObjectParamLoader &pParams,std::shared_ptr<HealthBar> healthBar) : GameObject(pParams), m_healthBar (std::move(healthBar)){
+    explicit Enemy(const ObjectParamLoader &pParams, std::shared_ptr<HealthBar> healthBar) : GameObject(pParams),
+                                                                                             m_healthBar(std::move(
+                                                                                                     healthBar)) {
     }
 
     void draw() override;

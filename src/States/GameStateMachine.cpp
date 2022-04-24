@@ -1,16 +1,16 @@
 //
-// Created by Christoffer Lehre on 14/04/2022.
+// Created by 1024 on 14/04/2022.
 //
 
 #include <iostream>
 #include "GameStateMachine.h"
 
-void GameStateMachine::pushState(const std::shared_ptr<GameState>& pState) {
+void GameStateMachine::pushState(const std::shared_ptr<GameState> &pState) {
     m_gameState.push_back(pState);
     m_gameState.back()->onEnter();
 }
 
-void GameStateMachine::changeState(const std::shared_ptr<GameState>& pState) {
+void GameStateMachine::changeState(const std::shared_ptr<GameState> &pState) {
     if (!m_gameState.empty()) {
         if (m_gameState.back()->getStateID() == pState->getStateID()) {
             return;
@@ -24,7 +24,7 @@ void GameStateMachine::changeState(const std::shared_ptr<GameState>& pState) {
 }
 
 
-void GameStateMachine::popState(const std::shared_ptr<GameState>& pState) {
+void GameStateMachine::popState(const std::shared_ptr<GameState> &pState) {
     if (!m_gameState.empty()) {
         if (m_gameState.back()->onExit()) {
             m_gameState.pop_back();

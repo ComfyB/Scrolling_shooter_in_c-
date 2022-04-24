@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 09/04/2022.
+// Created by 1024 on 09/04/2022.
 //
 
 #include "Projectile.h"
@@ -34,8 +34,8 @@ void Projectile::checkCollision() {
 }
 
 void Projectile::checkOOB() {
-    if(m_position.getY()<5)
-        m_isDead= true;
+    if (m_position.getY() < 5)
+        m_isDead = true;
     GameObject::checkOOB();
 }
 

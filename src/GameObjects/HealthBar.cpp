@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 09/04/2022.
+// Created by 1024 on 09/04/2022.
 //
 
 #include "HealthBar.h"

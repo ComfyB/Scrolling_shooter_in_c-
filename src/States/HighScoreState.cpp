@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 14/04/2022.
+// Created by 1024 on 14/04/2022.
 //
 
 #include "HighScoreState.h"
@@ -13,7 +13,7 @@ void HighScoreState::render() {
 }
 
 bool HighScoreState::onEnter() {
-   // Game::Instance().quit();
+    // Game::instance().quit();
     return false;
 }
 

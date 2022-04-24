@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 15/04/2022.
+// Created by 1024 on 15/04/2022.
 //
 
 #include "UI_Element.h"
@@ -15,7 +15,6 @@ void UI_Element::update() {
 void UI_Element::clean() {
     GameObject::clean();
 }
-
 
 
 void UI_Element::nextFrame() {

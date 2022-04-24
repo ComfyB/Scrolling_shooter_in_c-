@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 10/04/2022.
+// Created by 1024 on 10/04/2022.
 //
 
 #ifndef CPP_EKSAMEN3_PLAYINGSTATE_H
@@ -12,13 +12,20 @@
 
 class PlayingState : public GameState {
 public:
-    explicit PlayingState(std::string id): m_menuID(std::move(id)) {  };
-    ~PlayingState() override= default;
+    explicit PlayingState(std::string id) : m_menuID(std::move(id)) {};
+
+    ~PlayingState() override = default;
+
     void update() override;
+
     void render() override;
+
     bool onEnter() override;
+
     bool onExit() override;
+
     [[nodiscard]] std::string getStateID() const override;
+
     [[nodiscard]] std::shared_ptr<GameObject> getPlayer() const;
 
 private:

@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 10/04/2022.
+// Created by 1024 on 10/04/2022.
 //
 
 #include <iostream>
@@ -43,12 +43,12 @@ void MenuState::update() {
         case InputHandler::SPACE:
         case InputHandler::ENTER:
             if (currentSelection == NEWGAME) {
-                Game::Instance().getMGameStateMachine()->changeState(
+                Game::instance().getMGameStateMachine()->changeState(
                         std::shared_ptr<GameState>(new PlayingState("Playing")));
             } else if (currentSelection == ENDGAME) {
-                Game::Instance().quit();
+                Game::instance().quit();
             } else if (currentSelection == HIGHSCORE) {
-                Game::Instance().getMGameStateMachine()->changeState(
+                Game::instance().getMGameStateMachine()->changeState(
                         std::shared_ptr<GameState>(new HighScoreState("HIGHSCORE")));
             }
             break;
@@ -68,16 +68,16 @@ void MenuState::render() {
 
 bool MenuState::onEnter() {
     TextureManager::instance().load("../img/arrow_animated.png", "arrow_anim");
-    Game::Instance().addGameObject(
+    Game::instance().addGameObject(
             std::shared_ptr<GameObject>(new TextObject({{90, 50}, {250, 100}, {0, 0}, "NULL", 1, 1}, "Menu")));
-    Game::Instance().addGameObject(
+    Game::instance().addGameObject(
             std::shared_ptr<GameObject>(new TextObject({{90, 150}, {400, 100}, {0, 0}, "NULL", 1, 1}, "New Game")));
-    Game::Instance().addGameObject(
+    Game::instance().addGameObject(
             std::shared_ptr<GameObject>(new TextObject({{90, 250}, {450, 100}, {0, 0}, "NULL", 1, 1}, "Highscore")));
-    Game::Instance().addGameObject(
+    Game::instance().addGameObject(
             std::shared_ptr<GameObject>(new TextObject({{90, 350}, {200, 100}, {0, 0}, "NULL", 1, 1}, "Exit")));
     selector = std::shared_ptr<GameObject>(new UI_Element({{10, 180}, {64, 64}, {0, 0}, "arrow_anim", 1, 4}));
-    Game::Instance().addGameObject(selector);
+    Game::instance().addGameObject(selector);
     currentSelection = NEWGAME;
 
     std::cout << "enter MenuState" << std::endl;
@@ -86,7 +86,7 @@ bool MenuState::onEnter() {
 
 
 bool MenuState::onExit() {
-    Game::Instance().cleanState();
+    Game::instance().cleanState();
 
     std::cout << "exit MenuState" << std::endl;
     return true;

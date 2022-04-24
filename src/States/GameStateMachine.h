@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 14/04/2022.
+// Created by 1024 on 14/04/2022.
 //
 
 #ifndef CPP_EKSAMEN3_GAMESTATEMACHINE_H
@@ -13,11 +13,11 @@
 class GameStateMachine {
 
 public:
-    void changeState(const std::shared_ptr<GameState>& pState);
+    void changeState(const std::shared_ptr<GameState> &pState);
 
-    void pushState(const std::shared_ptr<GameState>& pState);
+    void pushState(const std::shared_ptr<GameState> &pState);
 
-    void popState(const std::shared_ptr<GameState>& pState);
+    void popState(const std::shared_ptr<GameState> &pState);
 
     [[nodiscard]] const std::vector<std::shared_ptr<GameState>> &getMGameState() const;
 

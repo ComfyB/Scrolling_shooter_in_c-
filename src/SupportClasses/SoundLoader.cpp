@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 09/04/2022.
+// Created by 1024 on 09/04/2022.
 //
 
 #include <iostream>
@@ -18,7 +18,7 @@ void SoundLoader::playSound(const char *id, int repeat) {
     Mix_PlayMusic(m_soundMap.at(id).get(), repeat);
 }
 
-void SoundLoader::clean(){
+void SoundLoader::clean() {
     m_soundMap.clear();
 }
 

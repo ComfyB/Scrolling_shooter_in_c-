@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 05/04/2022.
+// Created by 1024 on 05/04/2022.
 //
 
 #include <memory>
@@ -18,10 +18,10 @@ void GameObject::draw() {
 void GameObject::shoot(Vector2D velocity, Vector2D offset) {
     currentTime = SDL_GetTicks64();
     if (currentTime > lastTime + 200) {
-        Game::Instance().addGameObject(std::shared_ptr<GameObject>(
+        Game::instance().addGameObject(std::shared_ptr<GameObject>(
                 new Projectile({m_position + offset, {5, 20}, velocity, "bullet", 1,
                                 1})));
-        // SoundLoader::instance().playSound("shoot",1);
+        SoundLoader::instance().playSound("shoot", 1);
 
         lastTime = currentTime;
     }
@@ -76,7 +76,7 @@ bool GameObject::isMIsDead() const {
 
 
 void GameObject::checkCollision() {
-    for (const auto &two: Game::Instance().getGameObjects()) {
+    for (const auto &two: Game::instance().getGameObjects()) {
         if (m_hasHitBox && two->m_hasHitBox) {
             // collision x-axis?
             bool collisionX = m_position.getX() + m_size.getX() >= two->getMPosition().getX() &&
