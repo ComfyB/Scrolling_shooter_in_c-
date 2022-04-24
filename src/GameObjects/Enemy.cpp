@@ -11,7 +11,7 @@ void Enemy::draw() {
 
 void Enemy::update() {
     m_healthBar->setCurrent(m_lives * 20);
-    m_healthBar->updatePos(m_position + Vector2D{0, -30});
+    m_healthBar->updatePos(m_position + Vector2D{-30, -50});
     GameObject::update();
 }
 

@@ -14,6 +14,9 @@
 class Enemy : public GameObject {
 private:
     std::shared_ptr<HealthBar> m_healthBar;
+    int m_lives;
+    int m_maxHealth;
+
 public:
     explicit Enemy(const ObjectParamLoader &pParams, std::shared_ptr<HealthBar> healthBar) : GameObject(pParams),
                                                                                              m_healthBar(std::move(

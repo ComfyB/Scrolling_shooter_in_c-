@@ -15,10 +15,9 @@ private:
     std::shared_ptr<HealthBar> m_healthBar;
 public:
     explicit Player(const ObjectParamLoader &pParams, std::shared_ptr<HealthBar> healthBar) : GameObject(pParams),
-                                                                                              m_healthBar(std::move(
-                                                                                                      healthBar)) {
+                                                                                              m_healthBar(
+                                                                                                      std::move(healthBar)) {
     }
-
 
     void draw() override;
 
@@ -32,13 +31,13 @@ public:
 
     void nextFrame() override;
 
-    bool isMIsDead() const override;
-
     void setMVelocity(Vector2D velocity) override;
 
     void checkCollision() override;
 
     void checkOOB() override;
+
+    [[nodiscard]] bool isMIsDead() const override;
 
     [[nodiscard]] const Vector2D &getMPosition() const override;
 

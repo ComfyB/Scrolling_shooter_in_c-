@@ -6,7 +6,7 @@
 #include "../SupportClasses/TextureManager.h"
 
 void TextObject::draw() {
-    TextureManager::instance().renderText(m_text, m_position, m_size);
+    TextureManager::instance().renderText(m_text.c_str(), m_position, m_size);
 }
 
 

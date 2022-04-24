@@ -28,7 +28,7 @@ void Game::init() {
 void Game::randomEnemy() {
     addGameObject(std::make_shared<GameObject>(Enemy(
             {{Randomizer::generateRandomNumber(0, WINDOWWIDTH), Randomizer::generateRandomNumber(0, 50)}, {64, 64},
-             {3, 1}, "enemy", 3, 4}, std::make_shared<HealthBar>(20, Vector2D{20, 20}, Vector2D{20, 20}))));
+             {3, 1}, "enemy", 3, 4}, std::make_shared<HealthBar>(30, Vector2D{0, 0}, Vector2D{20, 300}))));
 }
 
 
@@ -41,7 +41,6 @@ void Game::loop() {
         renderLoop();
         SDL_PumpEvents();
         SDL_RenderPresent(TextureManager::instance().getRenderer());
-
     }
 
 }

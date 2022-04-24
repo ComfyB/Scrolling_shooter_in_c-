@@ -102,7 +102,7 @@ void TextureManager::drawFrame(const std::string &id, Vector2D pos, Vector2D siz
 }
 
 void TextureManager::drawBar(Vector2D pos, Vector2D size) {
-    SDL_SetRenderDrawColor(m_renderer.get(), 160, 10, 30, 0);
+    SDL_SetRenderDrawColor(m_renderer.get(), 160, 10, 30, 255);
     SDL_Rect destRect{pos.getX(), pos.getY(), size.getX(), size.getY()};
     SDL_RenderFillRect(m_renderer.get(), &destRect);
     SDL_SetRenderDrawColor(m_renderer.get(), 0, 0, 0, 255);

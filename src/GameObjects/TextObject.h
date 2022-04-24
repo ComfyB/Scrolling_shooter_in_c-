@@ -12,7 +12,7 @@
 
 class TextObject : public GameObject {
 public:
-    TextObject(const ObjectParamLoader &params, const char *text) : GameObject(params), m_text(text) {}
+    TextObject(const ObjectParamLoader &params, std::string text) : GameObject(params), m_text(std::move(text)) {}
 
     void draw() override;
 
@@ -40,7 +40,7 @@ public:
 
 private:
 
-    const char *m_text;
+   std::string m_text;
 };
 
 

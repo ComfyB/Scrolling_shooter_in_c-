@@ -13,6 +13,7 @@ class HealthBar {
 
     Vector2D m_pos;
     Vector2D m_size;
+
 public:
     HealthBar(int current, Vector2D pos, Vector2D size) : m_current_width(current), m_pos(pos), m_size(size) {
     }

@@ -28,7 +28,6 @@ void MenuState::update() {
             }
             break;
         case InputHandler::DOWN:
-
             if (currentSelection == HIGHSCORE) {
                 selector->setMPosition({10, 360});
                 currentSelection = ENDGAME;
@@ -42,6 +41,7 @@ void MenuState::update() {
             break;
         case InputHandler::SPACE:
         case InputHandler::ENTER:
+
             if (currentSelection == NEWGAME) {
                 Game::instance().getMGameStateMachine()->changeState(
                         std::shared_ptr<GameState>(new PlayingState("Playing")));
@@ -79,7 +79,6 @@ bool MenuState::onEnter() {
     selector = std::shared_ptr<GameObject>(new UI_Element({{10, 180}, {64, 64}, {0, 0}, "arrow_anim", 1, 4}));
     Game::instance().addGameObject(selector);
     currentSelection = NEWGAME;
-
     std::cout << "enter MenuState" << std::endl;
     return true;
 }

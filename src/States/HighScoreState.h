@@ -23,6 +23,7 @@ public:
     [[nodiscard]] std::string getStateID() const override;
 
 private:
+    std::vector<std::string> m_highscores;
     const std::string m_highscoreID;
 
 };
