@@ -13,10 +13,13 @@
 class Player : public GameObject {
 private:
     std::shared_ptr<HealthBar> m_healthBar;
+
 public:
     explicit Player(const ObjectParamLoader &pParams, std::shared_ptr<HealthBar> healthBar) : GameObject(pParams),
                                                                                               m_healthBar(
-                                                                                                      std::move(healthBar)) {
+                                                                                                      std::move(
+                                                                                                              healthBar)) {
+        m_identifier = "player";
     }
 
     void draw() override;

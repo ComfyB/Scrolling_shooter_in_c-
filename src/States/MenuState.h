@@ -30,6 +30,8 @@ public:
 
     [[nodiscard]]  std::string getStateID() const override;
 
+    void increaseScore() override {}
+
 private:
     enum menuItem {
         NEWGAME = 1021, HIGHSCORE = 1022, ENDGAME = 1023

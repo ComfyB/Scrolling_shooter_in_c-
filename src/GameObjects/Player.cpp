@@ -10,8 +10,8 @@ void Player::draw() {
 }
 
 void Player::update() {
-    m_healthBar->setCurrent(14 * m_lives);
-    m_healthBar->updatePos(m_position + Vector2D{-10, -30});
+    m_healthBar->updatePos(m_position + Vector2D{-28,-30});
+    m_healthBar->setCurrent(m_lives*22);
     GameObject::update();
 }
 

@@ -20,6 +20,8 @@ protected:
     Uint32 currentTime = 0;
     Uint32 lastTime = 0;
 
+    std::string m_identifier;
+
     std::string m_textureID;
     int m_lives;
     int m_currentRow;
@@ -76,6 +78,9 @@ public:
     void setMPosition(const Vector2D &mPosition);
 
     virtual void shoot(Vector2D velocity, Vector2D offset);
+
+    std::string getIdentifier();
+
 };
 
 

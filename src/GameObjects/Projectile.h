@@ -10,7 +10,9 @@
 
 class Projectile : public GameObject {
 public:
-    explicit Projectile(const ObjectParamLoader &pParams) : GameObject(pParams) {}
+    explicit Projectile(const ObjectParamLoader &pParams) : GameObject(pParams) {
+        m_identifier = "projectile";
+    }
 
     void draw() override;
 

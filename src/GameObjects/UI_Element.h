@@ -22,7 +22,7 @@ public:
 
     void nextFrame() override;
 
-    bool isMIsDead() const override;
+    [[nodiscard]] bool isMIsDead() const override;
 
     void setMVelocity(Vector2D velocity) override;
 

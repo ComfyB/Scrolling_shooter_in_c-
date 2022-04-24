@@ -33,7 +33,6 @@ void GameObject::update() {
     checkOOB();
     if (m_hasHitBox)
         checkCollision();
-
     m_position = m_position + m_velocity;
 }
 
@@ -52,7 +51,6 @@ void GameObject::checkOOB() {
         m_velocity.setY(-m_velocity.getY());
 
     }
-
     if (m_position.getY() >= WINDOWHEIGHT - m_size.getY()) {
         m_position.setY(WINDOWHEIGHT - m_size.getY());
         m_velocity.setY(-m_velocity.getY());
@@ -62,6 +60,7 @@ void GameObject::checkOOB() {
 
 void GameObject::clean() {
     TextureManager::instance().cleanAt(m_textureID);
+
 }
 
 void GameObject::nextFrame() {
@@ -92,7 +91,6 @@ void GameObject::checkCollision() {
 
         }
 
-
         if (m_lives == 0) {
             m_isDead = true;
         }
@@ -122,6 +120,9 @@ void GameObject::setMIsDead(bool mIsDead) {
 void GameObject::setMText(const char *mText) {
 }
 
+std::string GameObject::getIdentifier(){
+    return m_identifier;
+}
 void GameObject::setMPosition(const Vector2D &mPosition) {
     m_position = mPosition;
 }

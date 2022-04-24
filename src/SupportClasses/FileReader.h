@@ -12,16 +12,12 @@
 #include "../GameObjects/GameObject.h"
 
 class FileReader {
-    bool openFile(std::string *path);
-
-    std::shared_ptr<GameObject>  parseObject(std::vector<std::string> csvLines, int LineNO);
 
 public:
     static void writeHighscore(int score);
 
    static std::vector<std::string> readLines(const char *path);
 
-    std::shared_ptr<GameObject> parseObject(std::vector<std::string> csvLines);
 };
 
 

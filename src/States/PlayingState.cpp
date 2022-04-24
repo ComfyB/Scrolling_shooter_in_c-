@@ -3,15 +3,23 @@
 //
 
 #include <charconv>
+#include <memory>
 #include "PlayingState.h"
 #include "../Game/Game.h"
 #include "../SupportClasses/SoundLoader.h"
 #include "MenuState.h"
 #include "../GameObjects/TextObject.h"
+#include "../SupportClasses/FileReader.h"
 
 void PlayingState::update() {
     updateScore();
     keyInputs();
+
+    if (m_player->isMIsDead()) {
+        FileReader::writeHighscore(m_score);
+        Game::instance().getMGameStateMachine()->changeState(std::shared_ptr<GameState>(new MenuState("Menu")));
+    }
+
 }
 
 void PlayingState::keyInputs() {
@@ -23,13 +31,13 @@ void PlayingState::keyInputs() {
             m_player->setMVelocity({0, 2});
             break;
         case InputHandler::LEFT:
-            m_player->setMVelocity({-2, 0});
+            m_player->setMVelocity({-5, 0});
             break;
         case InputHandler::RIGHT:
-            m_player->setMVelocity({2, 0});
+            m_player->setMVelocity({5, 0});
             break;
         case InputHandler::QUIT:
-            Game::instance().getMGameStateMachine()->changeState(std::shared_ptr<GameState>(new MenuState("Menu")));
+            Game::instance().getMGameStateMachine()->changeState(std::make_shared<MenuState>("Menu"));
             break;
         case InputHandler::SPACE:
             m_player->shoot({0, -8}, {30, -40});
@@ -53,17 +61,19 @@ bool PlayingState::onEnter() {
     SoundLoader::instance().loadSound("../sound/shoot.wav", "shoot");
     m_scoreText = std::shared_ptr<GameObject>(new TextObject({{600, 30}, {120, 30}, {0, 0}, "NULL", 1, 1}, "1"));
     m_scoreText->setMHasHitBox(false);
-    m_player = std::make_shared<GameObject>(Player({{10, 300}, {50, 64}, {1, 1}, "ship", 5, 4},
-                                                   std::make_shared<HealthBar>(HealthBar{80, {50, 50}, {80, 15}})));
+    m_player = std::shared_ptr<GameObject>(new Player({{10, 300}, {50, 64}, {1, 1}, "ship", 5, 4},
+                                                      std::make_shared<HealthBar>(Vector2D{0, 0}, Vector2D{250, 15})));
     Game::instance().addGameObject(m_scoreText);
     Game::instance().addGameObject(m_player);
     Game::instance().randomEnemy();
+    m_score = 0;
     return true;
 }
 
 bool PlayingState::onExit() {
-    Game::instance().cleanState();
+    FileReader::writeHighscore(m_score);
     SoundLoader::instance().clean();
+    Game::instance().cleanState();
     return true;
 }
 
@@ -79,4 +89,12 @@ void PlayingState::updateScore() {
     m_scoreText_string = "score" + std::to_string(m_score);
     m_scoreText->setMText(m_scoreText_string.c_str());
 
+}
+
+void PlayingState::setMScore(int mScore) {
+    m_score = mScore;
+}
+
+void PlayingState::increaseScore() {
+    m_score++;
 }

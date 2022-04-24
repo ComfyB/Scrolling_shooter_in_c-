@@ -22,6 +22,8 @@ public:
 
     [[nodiscard]] std::string getStateID() const override;
 
+    void increaseScore() override;
+
 private:
     std::vector<std::string> m_highscores;
     const std::string m_highscoreID;

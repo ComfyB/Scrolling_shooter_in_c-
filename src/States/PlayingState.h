@@ -12,7 +12,8 @@
 
 class PlayingState : public GameState {
 public:
-    explicit PlayingState(std::string id) : m_menuID(std::move(id)) {};
+    explicit PlayingState(std::string id) : m_menuID(std::move(id)) {
+    };
 
     ~PlayingState() override = default;
 
@@ -27,6 +28,10 @@ public:
     [[nodiscard]] std::string getStateID() const override;
 
     [[nodiscard]] std::shared_ptr<GameObject> getPlayer() const;
+
+    void setMScore(int mScore);
+
+    void increaseScore() override;
 
 private:
     int m_score = 0;

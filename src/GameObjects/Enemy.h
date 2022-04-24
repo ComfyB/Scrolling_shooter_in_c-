@@ -14,13 +14,12 @@
 class Enemy : public GameObject {
 private:
     std::shared_ptr<HealthBar> m_healthBar;
-    int m_lives;
-    int m_maxHealth;
 
 public:
-    explicit Enemy(const ObjectParamLoader &pParams, std::shared_ptr<HealthBar> healthBar) : GameObject(pParams),
+    explicit Enemy(const ObjectParamLoader &pParams, std::shared_ptr<HealthBar> healthBar)  : GameObject(pParams),
                                                                                              m_healthBar(std::move(
                                                                                                      healthBar)) {
+        m_identifier = "enemy";
     }
 
     void draw() override;
@@ -28,8 +27,7 @@ public:
     void update() override;
 
     void clean() override;
-
-
+    
     void nextFrame() override;
 
     [[nodiscard]] bool isMIsDead() const override;

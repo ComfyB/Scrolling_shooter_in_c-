@@ -49,7 +49,6 @@ bool HighScoreState::onEnter() {
                                  1}, text)));
         if (++counter > 10) break;
     }
-    // Game::instance().quit();
     return true;
 }
 
@@ -60,4 +59,8 @@ bool HighScoreState::onExit() {
 
 std::string HighScoreState::getStateID() const {
     return m_highscoreID;
+}
+
+void HighScoreState::increaseScore() {
+
 }

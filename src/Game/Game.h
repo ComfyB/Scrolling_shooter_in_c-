@@ -26,8 +26,9 @@ private:
 
     std::vector<std::shared_ptr<GameObject>> m_gameObjects;
     std::shared_ptr<GameObject> m_player;
-    std::unique_ptr<TextureManager> m_textureManager;
     std::shared_ptr<GameStateMachine> m_gameStateMachine;
+
+
 
 public:
     Game(const Game &) = delete;
@@ -61,8 +62,9 @@ public:
 
     [[nodiscard]] std::shared_ptr<GameStateMachine> getMGameStateMachine() const;
 
-    const std::unique_ptr<TextureManager> &getMTextureManager() const;
+    void updateLoop();
 
+    void checkLivesLoop();
 };
 
 

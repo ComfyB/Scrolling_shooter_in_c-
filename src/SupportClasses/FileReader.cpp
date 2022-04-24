@@ -50,10 +50,3 @@ void FileReader::writeHighscore(int score) {
     }
     file.close();
 }
-
-std::shared_ptr<GameObject> FileReader::parseObject(std::vector<std::string> csvLines) {
-    for (auto s: csvLines) {
-
-    }
-    return std::shared_ptr<GameObject>();
-}

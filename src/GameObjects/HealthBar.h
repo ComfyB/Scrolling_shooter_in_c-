@@ -9,13 +9,11 @@
 #include "../SupportClasses/Vector2D.h"
 
 class HealthBar {
-    int m_current_width;
-
     Vector2D m_pos;
     Vector2D m_size;
 
 public:
-    HealthBar(int current, Vector2D pos, Vector2D size) : m_current_width(current), m_pos(pos), m_size(size) {
+    HealthBar(Vector2D pos, Vector2D size) :  m_pos(pos), m_size(size) {
     }
 
     void draw();

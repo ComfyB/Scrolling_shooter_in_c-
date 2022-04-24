@@ -10,8 +10,8 @@ void Enemy::draw() {
 }
 
 void Enemy::update() {
-    m_healthBar->setCurrent(m_lives * 20);
-    m_healthBar->updatePos(m_position + Vector2D{-30, -50});
+    m_healthBar->setCurrent(m_lives * 26);
+    m_healthBar->updatePos(m_position + Vector2D{-10, -50});
     GameObject::update();
 }
 
