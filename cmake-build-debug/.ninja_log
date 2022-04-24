@@ -55,3 +55,16 @@
 903	955	1650837087374776881	cpp_eksamen3	796e466221d022e9
 1	863	1650837105884996743	CMakeFiles/cpp_eksamen3.dir/src/Game/Game.cpp.o	f9539f208f1a89b5
 863	913	1650837105936008672	cpp_eksamen3	796e466221d022e9
+2	660	1650837185120764742	CMakeFiles/cpp_eksamen3.dir/main.cpp.o	8c46454bae0b7d34
+4	700	1650837185160861260	CMakeFiles/cpp_eksamen3.dir/src/SupportClasses/FileReader.cpp.o	4e0d756d56ab0e43
+3	788	1650837185248247626	CMakeFiles/cpp_eksamen3.dir/src/States/HighScoreState.cpp.o	66cbab7e5c760555
+3	855	1650837185314891920	CMakeFiles/cpp_eksamen3.dir/src/States/PlayingState.cpp.o	c90d7428b169e163
+855	906	1650837185366522390	cpp_eksamen3	796e466221d022e9
+1	720	1650837378369387422	CMakeFiles/cpp_eksamen3.dir/src/States/MenuState.cpp.o	3dc2a70ed624a824
+720	768	1650837378417912585	cpp_eksamen3	796e466221d022e9
+2	763	1650837503203062754	CMakeFiles/cpp_eksamen3.dir/src/GameObjects/GameObject.cpp.o	c098615f0b5e05f6
+2	917	1650837503357450005	CMakeFiles/cpp_eksamen3.dir/src/Game/Game.cpp.o	f9539f208f1a89b5
+917	965	1650837503406003519	cpp_eksamen3	796e466221d022e9
+1	810	1650837551165628024	CMakeFiles/cpp_eksamen3.dir/src/States/PlayingState.cpp.o	c90d7428b169e163
+1	893	1650837551248523122	CMakeFiles/cpp_eksamen3.dir/src/Game/Game.cpp.o	f9539f208f1a89b5
+893	943	1650837551300059790	cpp_eksamen3	796e466221d022e9

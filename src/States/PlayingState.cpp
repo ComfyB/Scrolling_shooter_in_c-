@@ -37,7 +37,7 @@ void PlayingState::keyInputs() {
             m_player->setMVelocity({5, 0});
             break;
         case InputHandler::QUIT:
-            Game::instance().getMGameStateMachine()->changeState(std::make_shared<MenuState>("Menu"));
+            m_player->setMIsDead(true); //bugs if you don't let the gameLoop() do the normal cleanups.
             break;
         case InputHandler::SPACE:
             m_player->shoot({0, -8}, {30, -40});

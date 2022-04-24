@@ -73,7 +73,6 @@ bool GameObject::isMIsDead() const {
     return m_isDead;
 }
 
-
 void GameObject::checkCollision() {
     for (const auto &two: Game::instance().getGameObjects()) {
         if (m_hasHitBox && two->m_hasHitBox) {

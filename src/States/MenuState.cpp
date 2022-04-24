@@ -67,6 +67,7 @@ void MenuState::render() {
 }
 
 bool MenuState::onEnter() {
+
     TextureManager::instance().load("../img/arrow_animated.png", "arrow_anim");
     Game::instance().addGameObject(
             std::shared_ptr<GameObject>(new TextObject({{90, 50}, {250, 100}, {0, 0}, "NULL", 1, 1}, "Menu")));
@@ -86,7 +87,6 @@ bool MenuState::onEnter() {
 
 bool MenuState::onExit() {
     Game::instance().cleanState();
-
     std::cout << "exit MenuState" << std::endl;
     return true;
 
