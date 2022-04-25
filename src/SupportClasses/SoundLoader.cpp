@@ -22,3 +22,8 @@ void SoundLoader::clean() {
     m_soundMap.clear();
 }
 
+[[maybe_unused]] void SoundLoader::mute() {
+    Mix_VolumeMusic(0);
+    SDL_Delay(10);
+}
+

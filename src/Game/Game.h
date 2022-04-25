@@ -20,14 +20,18 @@ class Game {
 private:
     Game() = default;;
 
-    bool m_isRunning;
-    Uint32 m_frameStart;
-    Uint32 m_timeFromLast;
+    bool m_isRunning{};
+    Uint32 m_frameStart{};
+    Uint32 m_timeFromLast{};
+public:
+    void setMDifficulty(int mDifficulty);
+
+private:
+    int m_difficulty = 0;
 
     std::vector<std::shared_ptr<GameObject>> m_gameObjects;
     std::shared_ptr<GameObject> m_player;
     std::shared_ptr<GameStateMachine> m_gameStateMachine;
-
 
 
 public:
@@ -44,7 +48,7 @@ public:
         return game;
     }
 
-    const std::shared_ptr<GameObject> &getMPlayer() const;
+    [[nodiscard]] const std::shared_ptr<GameObject> &getMPlayer() const;
 
     void init();
 
@@ -69,6 +73,8 @@ public:
     void setMPlayer(const std::shared_ptr<GameObject> &mPlayer);
 
     void randomEnemy(int difficulty);
+
+
 };
 
 

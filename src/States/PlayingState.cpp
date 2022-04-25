@@ -10,7 +10,6 @@
 #include "MenuState.h"
 #include "../GameObjects/TextObject.h"
 #include "../SupportClasses/FileReader.h"
-#include "../GameObjects/UIElement.h"
 #include "../GameObjects/BG.h"
 
 void PlayingState::update() {
@@ -25,6 +24,7 @@ void PlayingState::update() {
 
 void PlayingState::keyInputs() {
     switch (InputHandler::Instance().update()) {
+
         case InputHandler::UP:
             m_player->setMVelocity({0, -2});
             break;
@@ -37,6 +37,9 @@ void PlayingState::keyInputs() {
         case InputHandler::RIGHT:
             m_player->setMVelocity({5, 0});
             break;
+        case InputHandler::MUTED:
+            SoundLoader::instance().mute();
+            break;
         case InputHandler::QUIT:
             m_player->setMIsDead(true); //bugs if you don't let the gameLoop() do the normal cleanups.
             break;
@@ -48,6 +51,7 @@ void PlayingState::keyInputs() {
         case InputHandler::NOTHING:
         case InputHandler::ENTER:
             break;
+
     }
 }
 
@@ -70,6 +74,8 @@ bool PlayingState::onEnter() {
     Game::instance().addGameObject(m_bg);
     Game::instance().addGameObject(m_bg_level);
     Game::instance().addGameObject(m_scoreText);
+    Game::instance().addGameObject(std::shared_ptr<GameObject>(new TextObject({{80,30},{80,15},{0,0},"NULL",1,1},"m to mute")));
+
     Game::instance().addGameObject(m_player);
     Game::instance().setMPlayer(m_player);
     Game::instance().randomEnemy(0);
@@ -98,11 +104,18 @@ void PlayingState::updateScore() {
     if(m_score == 3 && m_currentLevel != 2){
         TextureManager::instance().cleanAt("bg1");
         TextureManager::instance().load("../img/level2.png", "bg1");
+        Game::instance().setMDifficulty(2);
         m_currentLevel = 2;
     }    if(m_score == 6 && m_currentLevel != 3){
         TextureManager::instance().cleanAt("bg1");
         TextureManager::instance().load("../img/level3.png", "bg1");
+        Game::instance().setMDifficulty(3);
         m_currentLevel = 3;
+    }   if(m_score == 8 && m_currentLevel != 4){
+        TextureManager::instance().cleanAt("bg1");
+        TextureManager::instance().load("../img/level3.png", "bg1");
+        Game::instance().setMDifficulty(4);
+        m_currentLevel = 4;
     }
 
 }

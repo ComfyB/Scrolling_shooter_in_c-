@@ -26,6 +26,7 @@ public:
         SPACE = 10207,
         RANDOMENEMY = 10208,
         ENTER = 10210,
+        MUTED = 10211,
         NOTHING = 10209//ID's/ numbers to make the enum work
     };
 

@@ -9,12 +9,14 @@
 #include <map>
 #include <memory>
 #include "SDL_mixer.h"
+#include "SDL.h"
 
 class SoundLoader {
 private:
     SoundLoader() = default;
 
     std::map<std::string, std::shared_ptr<Mix_Music>> m_soundMap;
+    bool m_isMuted =false;
 
 public:
 
@@ -38,6 +40,8 @@ public:
     void playSound(const char *id, int repeat);
 
     void clean();
+
+    void mute();
 };
 
 

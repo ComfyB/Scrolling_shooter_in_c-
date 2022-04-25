@@ -6,10 +6,8 @@
 #include <functional>
 #include <memory>
 #include "Game.h"
-#include <typeinfo>
 #include "../SupportClasses/SoundLoader.h"
 #include "../States/MenuState.h"
-
 
 #define UPDATE_TICK_TIME 16   //about 60tick - controls how often the gameobjects should be updated. uncaps framerate.
 
@@ -17,7 +15,6 @@
 void Game::init() {
     TextureManager::instance().init();
     SoundLoader::instance().init();
-
     m_gameStateMachine = std::make_shared<GameStateMachine>();
     m_gameStateMachine->pushState(std::make_shared<MenuState>("Menu"));
     m_timeFromLast = 16;
@@ -29,8 +26,8 @@ void Game::init() {
 
 void Game::randomEnemy(int difficulty) {
     addGameObject(std::shared_ptr<GameObject>(new Enemy(
-            {{Randomizer::generateRandomNumber(0, WINDOWWIDTH), Randomizer::generateRandomNumber(0, 50)}, {64, 64},
-             {3, Randomizer::generateRandomNumber(0, difficulty)}, "enemy", 3, 4},
+            {{Randomizer::generateRandomNumber(0, WINDOWWIDTH-64), Randomizer::generateRandomNumber(0, 30)}, {64, 64},
+             {difficulty+3, Randomizer::generateRandomNumber(0, difficulty*2)}, "enemy", 3, 4},
             std::make_shared<HealthBar>(Vector2D{-30, 80}, Vector2D{20, 10}))));
 }
 
@@ -68,11 +65,12 @@ void Game::updateLoop() {
     m_frameStart = SDL_GetTicks64();
     if (m_frameStart >= (m_timeFromLast + UPDATE_TICK_TIME)) {
         for (const auto &GO: m_gameObjects) {
+            if(GO == nullptr) break;
             GO->update();
             if (std::dynamic_pointer_cast<Enemy>(GO) != nullptr) {
                 if (GO->isMIsDead()) {
                     m_gameStateMachine->getMGameState().back()->increaseScore();
-                    randomEnemy(1);
+                    randomEnemy(m_difficulty);
                 }
 
             }
@@ -118,5 +116,10 @@ const std::shared_ptr<GameObject> &Game::getMPlayer() const {
 void Game::setMPlayer(const std::shared_ptr<GameObject> &mPlayer) {
     m_player = mPlayer;
 }
+
+void Game::setMDifficulty(int mDifficulty) {
+    m_difficulty = mDifficulty;
+}
+
 
 

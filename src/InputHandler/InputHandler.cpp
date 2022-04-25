@@ -28,6 +28,9 @@ InputHandler::keys InputHandler::update() {
             if (keyStates[SDL_SCANCODE_D] || keyStates[SDL_SCANCODE_RIGHT]) {
                 return RIGHT;
             }
+            if(keyStates[SDL_SCANCODE_M]){
+                return MUTED;
+            }
             if (keyStates[SDL_SCANCODE_RETURN]) {
                 return ENTER;
             }

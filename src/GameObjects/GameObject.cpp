@@ -14,7 +14,6 @@ void GameObject::draw() {
                                          TextureManager::instance().getRenderer(), SDL_FLIP_NONE, 0);
 }
 
-
 void GameObject::shoot(Vector2D velocity, Vector2D offset) {
     currentTime = SDL_GetTicks64();
     if (currentTime > lastTime + 200) {
@@ -22,8 +21,8 @@ void GameObject::shoot(Vector2D velocity, Vector2D offset) {
                 new Projectile({m_position + offset, {5, 20}, velocity, "bullet", 1,
                                 1})));
         SoundLoader::instance().playSound("shoot", 1);
-
         lastTime = currentTime;
+
     }
 }
 
@@ -123,9 +122,10 @@ void GameObject::setMIsDead(bool mIsDead) {
 void GameObject::setMText(const char *mText) {
 }
 
-std::string GameObject::getIdentifier(){
+std::string GameObject::getIdentifier() {
     return m_identifier;
 }
+
 void GameObject::setMPosition(const Vector2D &mPosition) {
     m_position = mPosition;
 }
