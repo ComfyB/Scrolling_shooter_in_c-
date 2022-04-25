@@ -25,7 +25,6 @@ protected:
     std::string m_textureID;
     int m_lives;
     int m_currentRow;
-    int m_rows;
     int m_frames;
     int m_currentFrame;
 
@@ -41,7 +40,6 @@ protected:
                                                             m_lives(pParams.getMLives()) {
         m_isDead = false;
         m_currentRow = 0;
-        m_rows = 0;
         m_currentFrame = 0;
         m_hasHitBox = true;
         m_identifier = "";
@@ -58,7 +56,6 @@ public:
     virtual void nextFrame();
 
 
-    [[nodiscard]] virtual bool isMIsDead() const;
 
     virtual void setMVelocity(Vector2D velocity);
 
@@ -66,23 +63,20 @@ public:
 
     virtual void checkOOB();
 
-    [[nodiscard]] virtual const Vector2D &getMPosition() const;
-
-    [[nodiscard]] virtual Vector2D getMSize() const;
-
     virtual void setMText(const char *mText);
 
     void setMIsDead(bool mIsDead);
-
-    void setMHasHitBox(bool mHasHitBox);
 
     void setMPosition(const Vector2D &mPosition);
 
     virtual void shoot(Vector2D velocity, Vector2D offset);
 
-    std::string getIdentifier();
+    [[nodiscard]] virtual const Vector2D &getMPosition() const;
 
-    const Vector2D &getMVelocity() const;
+    [[nodiscard]] virtual Vector2D getMSize() const;
+
+    [[nodiscard]] virtual bool isMIsDead() const;
+
 
 };
 

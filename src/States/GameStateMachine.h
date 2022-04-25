@@ -17,8 +17,6 @@ public:
 
     void pushState(const std::shared_ptr<GameState> &pState);
 
-    void popState(const std::shared_ptr<GameState> &pState);
-
     [[nodiscard]] const std::vector<std::shared_ptr<GameState>> &getMGameState() const;
 
 

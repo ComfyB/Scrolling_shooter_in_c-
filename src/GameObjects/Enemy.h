@@ -44,7 +44,7 @@ public:
 
     void shoot(Vector2D velocity, Vector2D offset) override;
 
-    Vector2D normalize(int velocityFactor, Vector2D v);
+    static Vector2D normalize(int velocityFactor, Vector2D v);
 };
 
 

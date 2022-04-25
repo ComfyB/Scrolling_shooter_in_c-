@@ -71,10 +71,6 @@ bool GameObject::isMIsDead() const {
     return m_isDead;
 }
 
-const Vector2D &GameObject::getMVelocity() const {
-    return m_velocity;
-}
-
 void GameObject::checkCollision() {
     for (const auto &two: Game::instance().getGameObjects()) {
         if (m_hasHitBox && two->m_hasHitBox) {
@@ -111,19 +107,12 @@ Vector2D GameObject::getMSize() const {
     return m_size;
 }
 
-void GameObject::setMHasHitBox(bool mHasHitBox) {
-    m_hasHitBox = mHasHitBox;
-}
 
 void GameObject::setMIsDead(bool mIsDead) {
     m_isDead = mIsDead;
 }
 
 void GameObject::setMText(const char *mText) {
-}
-
-std::string GameObject::getIdentifier() {
-    return m_identifier;
 }
 
 void GameObject::setMPosition(const Vector2D &mPosition) {

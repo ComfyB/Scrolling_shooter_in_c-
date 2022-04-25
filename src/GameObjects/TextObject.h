@@ -14,17 +14,17 @@ class TextObject : public GameObject {
 public:
     TextObject(const ObjectParamLoader &params, std::string text) : GameObject(params), m_text(std::move(text)) {m_hasHitBox=false;}
 
-    void draw() override;
+    void nextFrame() override;
 
     void update() override;
 
     void clean() override;
 
+    void draw() override;
+
     void shoot(Vector2D velocity, Vector2D offset) override;
 
-    void nextFrame() override;
-
-    bool isMIsDead() const override;
+    void setMText(const char *mText) override;
 
     void setMVelocity(Vector2D velocity) override;
 
@@ -32,11 +32,12 @@ public:
 
     void checkOOB() override;
 
-    const Vector2D &getMPosition() const override;
+    [[nodiscard]] const Vector2D &getMPosition() const override;
 
-    Vector2D getMSize() const override;
+    [[nodiscard]] Vector2D getMSize() const override;
 
-    void setMText(const char *mText) override;
+    [[nodiscard]] bool isMIsDead() const override;
+
 
 private:
 

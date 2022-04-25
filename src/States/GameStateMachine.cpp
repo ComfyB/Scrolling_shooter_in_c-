@@ -23,14 +23,6 @@ void GameStateMachine::changeState(const std::shared_ptr<GameState> &pState) {
 }
 
 
-void GameStateMachine::popState(const std::shared_ptr<GameState> &pState) {
-    if (!m_gameState.empty()) {
-        if (m_gameState.back()->onExit()) {
-            m_gameState.pop_back();
-        }
-    }
-}
-
 const std::vector<std::shared_ptr<GameState>> &GameStateMachine::getMGameState() const {
     return m_gameState;
 }

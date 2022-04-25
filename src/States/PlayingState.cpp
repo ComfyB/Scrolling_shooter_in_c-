@@ -55,10 +55,6 @@ void PlayingState::keyInputs() {
     }
 }
 
-void PlayingState::render() {
-
-}
-
 bool PlayingState::onEnter() {
     TextureManager::instance().load("../img/BG_1.png", "bg");
     TextureManager::instance().load("../img/level1.png", "bg1");
@@ -94,10 +90,6 @@ std::string PlayingState::getStateID() const {
     return m_menuID;
 }
 
-std::shared_ptr<GameObject> PlayingState::getPlayer() const {
-    return m_player;
-}
-
 void PlayingState::updateScore() {
     m_scoreText_string = "score:\t" + std::to_string(m_score);
     m_scoreText->setMText(m_scoreText_string.c_str());
@@ -120,9 +112,6 @@ void PlayingState::updateScore() {
 
 }
 
-void PlayingState::setMScore(int mScore) {
-    m_score = mScore;
-}
 
 void PlayingState::increaseScore() {
     m_score++;

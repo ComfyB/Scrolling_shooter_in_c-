@@ -27,10 +27,6 @@ void HighScoreState::update() {
     }
 }
 
-void HighScoreState::render() {
-
-}
-
 bool HighScoreState::onEnter() {
     m_highscores = FileReader::readLines("../csv/hs.csv");
     int counter = 1;

@@ -63,10 +63,6 @@ void MenuState::update() {
     }
 }
 
-void MenuState::render() {
-
-}
-
 bool MenuState::onEnter() {
 
     TextureManager::instance().load("../img/arrow_animated.png", "arrow_anim");

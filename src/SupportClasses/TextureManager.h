@@ -68,10 +68,6 @@ public:
         return m_renderer.get();
     }
 
-    SDL_Window *getWindow() {
-        return m_window.get();
-    }
-
     void renderText(const char *text, Vector2D pos, Vector2D size);
 
     void drawBar(Vector2D pos, Vector2D size);

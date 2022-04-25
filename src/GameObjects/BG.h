@@ -20,17 +20,17 @@ public:
 
     void nextFrame() override;
 
-    bool isMIsDead() const override;
-
     void setMVelocity(Vector2D velocity) override;
 
     void checkCollision() override;
 
     void checkOOB() override;
 
-    const Vector2D &getMPosition() const override;
+    [[nodiscard]] bool isMIsDead() const override;
 
-    Vector2D getMSize() const override;
+    [[nodiscard]] Vector2D getMSize() const override;
+
+    [[nodiscard]] const Vector2D &getMPosition() const override;
 
     void setMText(const char *mText) override;
 

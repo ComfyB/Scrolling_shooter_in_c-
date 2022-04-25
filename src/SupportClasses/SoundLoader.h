@@ -16,7 +16,6 @@ private:
     SoundLoader() = default;
 
     std::map<std::string, std::shared_ptr<Mix_Music>> m_soundMap;
-    bool m_isMuted =false;
 
 public:
 

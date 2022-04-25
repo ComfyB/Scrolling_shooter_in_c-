@@ -19,10 +19,6 @@ public:
 
     void setY(int y) { m_y = y; }
 
-    [[nodiscard]] int length() const {
-        return m_x * m_x + m_y * m_y;
-    }
-
     //overloading operators for easier addition etc of positions.
 
     Vector2D operator+(const Vector2D &vector2) const {
@@ -59,14 +55,6 @@ public:
         return *this;
     }
 
-    //normalization -> important for gamelogic etc
-
-    void normalize() {
-        int tmp = length();
-        if (tmp > 0) {
-            (*this) *= tmp / 1;
-        }
-    }
 
 private:
     int m_x;

@@ -19,17 +19,11 @@ public:
 
     void update() override;
 
-    void render() override;
-
     bool onEnter() override;
 
     bool onExit() override;
 
     [[nodiscard]] std::string getStateID() const override;
-
-    [[nodiscard]] std::shared_ptr<GameObject> getPlayer() const;
-
-    void setMScore(int mScore);
 
     void increaseScore() override;
 
