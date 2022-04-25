@@ -56,13 +56,18 @@ void PlayingState::keyInputs() {
 }
 
 bool PlayingState::onEnter() {
+    //load textures
+
     TextureManager::instance().load("../img/BG_1.png", "bg");
     TextureManager::instance().load("../img/level1.png", "bg1");
     TextureManager::instance().load("../img/ship3.png", "ship");
     TextureManager::instance().load("../img/UFO.png", "enemy");
     TextureManager::instance().load("../img/bullet.png", "bullet");
+    //load shooting sound
     SoundLoader::instance().loadSound("../sound/shoot.wav", "shoot");
-    m_bg = std::shared_ptr<GameObject>(new BG({{0, 0}, {800, 3000}, {0, -1}, "bg", 1, 1}));
+
+    //update saved pointers to new objects
+    m_bg = std::shared_ptr<GameObject>(new BG({{0, -2400}, {800, 3000}, {0, 2}, "bg", 1, 1}));
     m_bg_level = std::shared_ptr<GameObject>(new BG({{0, 0}, {800, 600}, {0, 0}, "bg1", 1, 1}));
     m_scoreText = std::shared_ptr<GameObject>(new TextObject({{600, 30}, {120, 30}, {0, 0}, "NULL", 1, 1}, "1"));
     m_player = std::shared_ptr<GameObject>(new Player({{10, 300}, {50, 64}, {1, 1}, "ship", 5, 4},
@@ -70,8 +75,10 @@ bool PlayingState::onEnter() {
     Game::instance().addGameObject(m_bg);
     Game::instance().addGameObject(m_bg_level);
     Game::instance().addGameObject(m_scoreText);
-    Game::instance().addGameObject(std::shared_ptr<GameObject>(new TextObject({{80,30},{80,15},{0,0},"NULL",1,1},"m to mute")));
 
+
+    Game::instance().addGameObject(std::shared_ptr<GameObject>(new TextObject({{80,30},{80,15},{0,0},"NULL",1,1},"m to mute")));
+// add the two items that should render up top. unfortunatly as we dont have an index, when you push the objects into the array matters.
     Game::instance().addGameObject(m_player);
     Game::instance().setMPlayer(m_player);
     Game::instance().randomEnemy(0);
@@ -93,6 +100,9 @@ std::string PlayingState::getStateID() const {
 void PlayingState::updateScore() {
     m_scoreText_string = "score:\t" + std::to_string(m_score);
     m_scoreText->setMText(m_scoreText_string.c_str());
+
+    //change BGcolor and difficulty if the score is corresponding to next level.
+
     if(m_score == 3 && m_currentLevel != 2){
         TextureManager::instance().cleanAt("bg1");
         TextureManager::instance().load("../img/level2.png", "bg1");
@@ -103,7 +113,7 @@ void PlayingState::updateScore() {
         TextureManager::instance().load("../img/level3.png", "bg1");
         Game::instance().setMDifficulty(3);
         m_currentLevel = 3;
-    }   if(m_score == 8 && m_currentLevel != 4){
+    }   if(m_score == 9 && m_currentLevel != 4){
         TextureManager::instance().cleanAt("bg1");
         TextureManager::instance().load("../img/level3.png", "bg1");
         Game::instance().setMDifficulty(4);

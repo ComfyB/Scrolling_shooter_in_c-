@@ -30,21 +30,22 @@ public:
     
     void nextFrame() override;
 
-    [[nodiscard]] bool isMIsDead() const override;
-
     void setMVelocity(Vector2D velocity) override;
 
     void checkCollision() override;
 
     void checkOOB() override;
 
+    void shoot(Vector2D velocity, Vector2D offset) override;
+
+    static Vector2D normalize(int velocityFactor, Vector2D v);
+
     [[nodiscard]] const Vector2D &getMPosition() const override;
 
     [[nodiscard]] Vector2D getMSize() const override;
 
-    void shoot(Vector2D velocity, Vector2D offset) override;
+    [[nodiscard]] bool isMIsDead() const override;
 
-    static Vector2D normalize(int velocityFactor, Vector2D v);
 };
 
 

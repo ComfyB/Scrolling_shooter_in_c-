@@ -28,12 +28,22 @@ void HighScoreState::update() {
 }
 
 bool HighScoreState::onEnter() {
-    m_highscores = FileReader::readLines("../csv/hs.csv");
-    int counter = 1;
-    int yPos = 50;
+
+
+
     Game::instance().addGameObject(
             std::shared_ptr<GameObject>(
                     new TextObject({{45, 10}, {200, 40}, {0, 0}, "NULL", 1, 1}, "Highscores")));
+
+    createHighScoreObjects();
+    return true;
+}
+
+void HighScoreState::createHighScoreObjects() {
+    m_highscores = FileReader::readLines("../csv/hs.csv");
+
+    int counter = 1;
+    int yPos = 50;
 
     for (const auto &s: m_highscores) {
         std::string text;
@@ -46,7 +56,6 @@ bool HighScoreState::onEnter() {
                                  1}, text)));
         if (++counter > 10) break;
     }
-    return true;
 }
 
 bool HighScoreState::onExit() {

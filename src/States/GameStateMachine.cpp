@@ -11,10 +11,10 @@ void GameStateMachine::pushState(const std::shared_ptr<GameState> &pState) {
 
 void GameStateMachine::changeState(const std::shared_ptr<GameState> &pState) {
     if (!m_gameState.empty()) {
-        if (m_gameState.back()->getStateID() == pState->getStateID()) {
+        if (m_gameState.back()->getStateID() == pState->getStateID()) { //if there are states and the state is what we are trying to change to we dont need to push a new one.
             return;
         }
-        if (m_gameState.back()->onExit()) {
+        if (m_gameState.back()->onExit()) { //if there is a state and we want another one we pop the last one and add the wanted state.
             m_gameState.pop_back();
         }
     }

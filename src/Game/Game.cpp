@@ -11,7 +11,7 @@
 
 #define UPDATE_TICK_TIME 16   //about 60tick - controls how often the gameobjects should be updated. uncaps framerate.
 
-//init important classes and variables so that the t
+//init important classes and variables
 void Game::init() {
     TextureManager::instance().init();
     SoundLoader::instance().init();
@@ -33,11 +33,10 @@ void Game::randomEnemy(int difficulty) {
 
 
 void Game::loop() {
-
     while (m_isRunning) {
         SDL_RenderClear(TextureManager::instance().getRenderer());
         m_gameStateMachine->getMGameState().back()->update();
-        checkLivesLoop();
+        removeDeadObjectsFromGameObjects();
         updateLoop();
         renderLoop();
         SDL_PumpEvents();
@@ -52,7 +51,7 @@ void Game::renderLoop() {
     }
 }
 
-void Game::checkLivesLoop() {
+void Game::removeDeadObjectsFromGameObjects() {
     m_gameObjects.erase(std::remove_if(m_gameObjects.begin(), m_gameObjects.end(),
                                        [](auto &ob) {
                                            if (ob->isMIsDead() && ob != instance().m_player)
@@ -64,18 +63,22 @@ void Game::checkLivesLoop() {
 void Game::updateLoop() {
     m_frameStart = SDL_GetTicks64();
     if (m_frameStart >= (m_timeFromLast + UPDATE_TICK_TIME)) {
-        for (const auto &GO: m_gameObjects) {
-            if(GO == nullptr) break;
-            GO->update();
-            if (std::dynamic_pointer_cast<Enemy>(GO) != nullptr) {
-                if (GO->isMIsDead()) {
-                    m_gameStateMachine->getMGameState().back()->increaseScore();
-                    randomEnemy(m_difficulty);
-                }
-
-            }
-        }
+        checkIfEnemyIsKilled();
         m_timeFromLast = m_frameStart;
+    }
+}
+
+void Game::checkIfEnemyIsKilled() {
+    for (const auto &GO: m_gameObjects) {
+        if(GO == nullptr) break; //needed to make sure we don't try to update if the object is an nullpointer. Happened rarely.
+        GO->update();
+        if (std::dynamic_pointer_cast<Enemy>(GO) != nullptr) {
+            if (GO->isMIsDead()) {
+                m_gameStateMachine->getMGameState().back()->increaseScore();
+                randomEnemy(m_difficulty);
+            }
+
+        }
     }
 }
 
@@ -84,7 +87,6 @@ void Game::quit() {
     TextureManager::instance().clean();
     SoundLoader::instance().clean();
     Mix_Quit();
-    SDL_VideoQuit();
     SDL_Quit();
 }
 

@@ -33,8 +33,8 @@ void BG::checkCollision() {
 }
 
 void BG::checkOOB() {
-    if(m_position.getY() <= -(m_size.getY()-600)){
-        m_position= {0,0};
+    if(m_position.getY() > -5){
+        m_position= {0,-(m_size.getY()-600)};
     }
 }
 

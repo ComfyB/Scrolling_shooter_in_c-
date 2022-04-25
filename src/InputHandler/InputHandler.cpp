@@ -44,6 +44,3 @@ InputHandler::keys InputHandler::update() {
     return NOTHING;
 }
 
-void InputHandler::clean() {
-
-}

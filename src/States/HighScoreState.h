@@ -25,7 +25,7 @@ public:
 private:
     std::vector<std::string> m_highscores;
     const std::string m_highscoreID;
-
+    void createHighScoreObjects();
 };
 
 

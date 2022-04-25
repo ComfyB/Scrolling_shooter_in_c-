@@ -59,7 +59,7 @@ public:
 
     void updateLoop();
 
-    void checkLivesLoop();
+    void removeDeadObjectsFromGameObjects();
 
     void cleanState();
 
@@ -76,6 +76,7 @@ public:
     void randomEnemy(int difficulty);
 
 
+    void checkIfEnemyIsKilled();
 };
 
 

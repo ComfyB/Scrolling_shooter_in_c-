@@ -13,9 +13,8 @@
 void MenuState::update() {
 
     switch (InputHandler::Instance().update()) {
-
+        //move the menuItemSelector
         case InputHandler::UP:
-
             if (currentSelection == NEWGAME) {
                 selector->setMPosition({10, 360});
                 currentSelection = ENDGAME;
@@ -66,6 +65,7 @@ void MenuState::update() {
 bool MenuState::onEnter() {
 
     TextureManager::instance().load("../img/arrow_animated.png", "arrow_anim");
+    //add menuItems
     Game::instance().addGameObject(
             std::shared_ptr<GameObject>(new TextObject({{90, 50}, {250, 100}, {0, 0}, "NULL", 1, 1}, "Menu")));
     Game::instance().addGameObject(
@@ -83,6 +83,7 @@ bool MenuState::onEnter() {
 
 
 bool MenuState::onExit() {
+    //delete gameobjects so we get a clean screen when entering new state.
     Game::instance().cleanState();
     std::cout << "exit MenuState" << std::endl;
     return true;

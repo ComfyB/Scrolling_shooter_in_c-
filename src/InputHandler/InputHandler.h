@@ -15,7 +15,6 @@ private:
     const Uint8 *keyStates;
     SDL_Event event;
 
-
 public:
     enum keys {
         UP = 10200,
@@ -45,9 +44,6 @@ public:
     }
 
     keys update();
-
-    void clean();
-
 
 };
 
