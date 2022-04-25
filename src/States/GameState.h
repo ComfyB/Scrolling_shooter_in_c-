@@ -1,6 +1,6 @@
 //
 // Created by 1024 on 13/04/2022.
-//
+// interface for Gamestates.
 
 #ifndef CPP_EKSAMEN3_GAMESTATE_H
 #define CPP_EKSAMEN3_GAMESTATE_H

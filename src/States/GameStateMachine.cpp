@@ -1,8 +1,7 @@
 //
 // Created by 1024 on 14/04/2022.
-//
+// GamestateMachine Manages and holds states- making sure that the states are handled.
 
-#include <iostream>
 #include "GameStateMachine.h"
 
 void GameStateMachine::pushState(const std::shared_ptr<GameState> &pState) {

@@ -7,6 +7,7 @@
 
 #include "SDL.h"
 
+
 class InputHandler {
 private:
     InputHandler() = default;
@@ -42,8 +43,6 @@ public:
         static InputHandler inputHandler;
         return inputHandler;
     }
-
-    void init();
 
     keys update();
 

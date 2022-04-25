@@ -48,7 +48,6 @@ public:
         return game;
     }
 
-    [[nodiscard]] const std::shared_ptr<GameObject> &getMPlayer() const;
 
     void init();
 
@@ -58,17 +57,19 @@ public:
 
     void renderLoop();
 
+    void updateLoop();
+
+    void checkLivesLoop();
+
     void cleanState();
 
     void addGameObject(const std::shared_ptr<GameObject> &newGO);
 
+    [[nodiscard]] const std::shared_ptr<GameObject> &getMPlayer() const;
+
     [[nodiscard]] const std::vector<std::shared_ptr<GameObject>> &getGameObjects() const;
 
     [[nodiscard]] std::shared_ptr<GameStateMachine> getMGameStateMachine() const;
-
-    void updateLoop();
-
-    void checkLivesLoop();
 
     void setMPlayer(const std::shared_ptr<GameObject> &mPlayer);
 

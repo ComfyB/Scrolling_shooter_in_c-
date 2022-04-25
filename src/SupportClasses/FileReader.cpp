@@ -20,8 +20,8 @@ std::vector<std::string> FileReader::readLines(const char *path) {
 }
 
 void FileReader::addHighscore(int score) {
-    u_long hslength = 0;
-    std::vector<std::string> tmp = FileReader::readLines("../hs.csv");
+    u_long hslength;
+    std::vector<std::string> tmp = FileReader::readLines("../csv/hs.csv");
     std::vector<int> tmpArray;
 
     for (const auto &s: tmp) {
@@ -30,7 +30,7 @@ void FileReader::addHighscore(int score) {
     tmpArray.emplace_back(score);
     std::sort(tmpArray.begin(), tmpArray.end(), std::greater<>());
     std::fstream file;
-    file.open("../hs.csv");
+    file.open("../csv/hs.csv");
     if (tmpArray.size() > 10) {
         hslength = 10;
     } else {

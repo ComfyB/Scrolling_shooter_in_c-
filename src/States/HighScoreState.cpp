@@ -22,6 +22,7 @@ void HighScoreState::update() {
         case InputHandler::NEWGAME:
         case InputHandler::NOTHING:
         case InputHandler::RANDOMENEMY:
+        case InputHandler::MUTED:
             break;
     }
 }
@@ -31,7 +32,7 @@ void HighScoreState::render() {
 }
 
 bool HighScoreState::onEnter() {
-    m_highscores = FileReader::readLines("../hs.csv");
+    m_highscores = FileReader::readLines("../csv/hs.csv");
     int counter = 1;
     int yPos = 50;
     Game::instance().addGameObject(

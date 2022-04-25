@@ -58,6 +58,7 @@ void MenuState::update() {
         case InputHandler::NEWGAME:
         case InputHandler::NOTHING:
         case InputHandler::RANDOMENEMY:
+        case InputHandler::MUTED:
             break;
     }
 }
