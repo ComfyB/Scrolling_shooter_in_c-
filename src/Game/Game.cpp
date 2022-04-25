@@ -6,6 +6,7 @@
 #include <functional>
 #include <memory>
 #include "Game.h"
+#include <typeinfo>
 #include "../SupportClasses/SoundLoader.h"
 #include "../States/MenuState.h"
 
@@ -26,10 +27,11 @@ void Game::init() {
 }
 
 
-void Game::randomEnemy() {
+void Game::randomEnemy(int difficulty) {
     addGameObject(std::shared_ptr<GameObject>(new Enemy(
             {{Randomizer::generateRandomNumber(0, WINDOWWIDTH), Randomizer::generateRandomNumber(0, 50)}, {64, 64},
-             {3, 1}, "enemy", 3, 4}, std::make_shared<HealthBar>(Vector2D{0, 0}, Vector2D{20, 10}))));
+             {3, Randomizer::generateRandomNumber(0, difficulty)}, "enemy", 3, 4},
+            std::make_shared<HealthBar>(Vector2D{-30, 80}, Vector2D{20, 10}))));
 }
 
 
@@ -38,9 +40,9 @@ void Game::loop() {
     while (m_isRunning) {
         SDL_RenderClear(TextureManager::instance().getRenderer());
         m_gameStateMachine->getMGameState().back()->update();
+        checkLivesLoop();
         updateLoop();
         renderLoop();
-        checkLivesLoop();
         SDL_PumpEvents();
         SDL_RenderPresent(TextureManager::instance().getRenderer());
     }
@@ -58,17 +60,21 @@ void Game::checkLivesLoop() {
                                        [](auto &ob) {
                                            if (ob->isMIsDead() && ob != instance().m_player)
                                                return true;
+                                           return false;
                                        }), m_gameObjects.end());
 }
 
 void Game::updateLoop() {
     m_frameStart = SDL_GetTicks64();
     if (m_frameStart >= (m_timeFromLast + UPDATE_TICK_TIME)) {
-        for (const auto &ob: m_gameObjects) {
-            ob->update();
-            if (ob->getIdentifier() == "enemy" && ob->isMIsDead()) {
-                m_gameStateMachine->getMGameState().back()->increaseScore();
-                randomEnemy();
+        for (const auto &GO: m_gameObjects) {
+            GO->update();
+            if (std::dynamic_pointer_cast<Enemy>(GO) != nullptr) {
+                if (GO->isMIsDead()) {
+                    m_gameStateMachine->getMGameState().back()->increaseScore();
+                    randomEnemy(1);
+                }
+
             }
         }
         m_timeFromLast = m_frameStart;
@@ -105,5 +111,12 @@ void Game::cleanState() {
     m_gameObjects.clear();
 }
 
+const std::shared_ptr<GameObject> &Game::getMPlayer() const {
+    return m_player;
+}
+
+void Game::setMPlayer(const std::shared_ptr<GameObject> &mPlayer) {
+    m_player = mPlayer;
+}
 
 

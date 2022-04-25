@@ -2,15 +2,15 @@
 // Created by 1024 on 15/04/2022.
 //
 
-#ifndef CPP_EKSAMEN3_UI_ELEMENT_H
-#define CPP_EKSAMEN3_UI_ELEMENT_H
+#ifndef CPP_EKSAMEN3_UIELEMENT_H
+#define CPP_EKSAMEN3_UIELEMENT_H
 
 
 #include "GameObject.h"
 
-class UI_Element : public GameObject {
+class UIElement : public GameObject {
 public:
-    explicit UI_Element(const ObjectParamLoader &pParams);
+    explicit UIElement(const ObjectParamLoader &pParams);
 
     void draw() override;
 
@@ -38,4 +38,4 @@ public:
 };
 
 
-#endif //CPP_EKSAMEN3_UI_ELEMENT_H
+#endif //CPP_EKSAMEN3_UIELEMENT_H

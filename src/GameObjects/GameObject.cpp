@@ -65,12 +65,15 @@ void GameObject::clean() {
 
 void GameObject::nextFrame() {
     m_currentFrame = int(SDL_GetTicks() / 100) % m_frames;
-
 }
 
 
 bool GameObject::isMIsDead() const {
     return m_isDead;
+}
+
+const Vector2D &GameObject::getMVelocity() const {
+    return m_velocity;
 }
 
 void GameObject::checkCollision() {
@@ -85,6 +88,7 @@ void GameObject::checkCollision() {
             // collision only if on both axes
             if (collisionX && collisionY && (this != two.get())) {
                 m_lives--;
+                two->m_lives--;
                 m_velocity = m_velocity - m_velocity * 2;
             }
 

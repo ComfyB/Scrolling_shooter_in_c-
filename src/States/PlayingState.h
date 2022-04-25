@@ -35,14 +35,20 @@ public:
 
 private:
     int m_score = 0;
+    int m_currentLevel = 1;
+
     const std::string m_menuID;
     std::string m_scoreText_string;
     std::shared_ptr<GameObject> m_player;
     std::shared_ptr<GameObject> m_scoreText;
+    std::shared_ptr<GameObject> m_bg;
+    std::shared_ptr<GameObject> m_bg_level;
 
     void keyInputs();
 
     void updateScore();
+
+
 };
 
 #endif //CPP_EKSAMEN3_PLAYINGSTATE_H

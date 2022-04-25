@@ -34,8 +34,9 @@ void Projectile::checkCollision() {
 }
 
 void Projectile::checkOOB() {
-    if (m_position.getY() < 5)
+    if (m_position.getY() < 5||m_position.getY() > 545)
         m_isDead = true;
+
     GameObject::checkOOB();
 }
 

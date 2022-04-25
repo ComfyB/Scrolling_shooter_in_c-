@@ -1,26 +1,22 @@
 //
-// Created by 1024 on 14/04/2022.
+// Created by 1024 on 25/04/2022.
 //
 
-#ifndef CPP_EKSAMEN3_TEXTOBJECT_H
-#define CPP_EKSAMEN3_TEXTOBJECT_H
+#ifndef CPP_EKSAMEN3_BG_H
+#define CPP_EKSAMEN3_BG_H
 
-
-#include <utility>
 
 #include "GameObject.h"
 
-class TextObject : public GameObject {
+class BG : public GameObject {
 public:
-    TextObject(const ObjectParamLoader &params, std::string text) : GameObject(params), m_text(std::move(text)) {m_hasHitBox=false;}
+    explicit BG(const ObjectParamLoader &pParams);
 
     void draw() override;
 
     void update() override;
 
     void clean() override;
-
-    void shoot(Vector2D velocity, Vector2D offset) override;
 
     void nextFrame() override;
 
@@ -38,10 +34,8 @@ public:
 
     void setMText(const char *mText) override;
 
-private:
-
-   std::string m_text;
+    void shoot(Vector2D velocity, Vector2D offset) override;
 };
 
 
-#endif //CPP_EKSAMEN3_TEXTOBJECT_H
+#endif //CPP_EKSAMEN3_BG_H

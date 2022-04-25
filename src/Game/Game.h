@@ -44,13 +44,13 @@ public:
         return game;
     }
 
+    const std::shared_ptr<GameObject> &getMPlayer() const;
+
     void init();
 
     void loop();
 
     void quit();
-
-    void randomEnemy();
 
     void renderLoop();
 
@@ -65,6 +65,10 @@ public:
     void updateLoop();
 
     void checkLivesLoop();
+
+    void setMPlayer(const std::shared_ptr<GameObject> &mPlayer);
+
+    void randomEnemy(int difficulty);
 };
 
 

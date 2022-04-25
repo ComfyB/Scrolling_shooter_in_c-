@@ -6,7 +6,7 @@
 #include "MenuState.h"
 #include "../Game/Game.h"
 #include "../GameObjects/TextObject.h"
-#include "../GameObjects/UI_Element.h"
+#include "../GameObjects/UIElement.h"
 #include "PlayingState.h"
 #include "HighScoreState.h"
 
@@ -77,7 +77,7 @@ bool MenuState::onEnter() {
             std::shared_ptr<GameObject>(new TextObject({{90, 250}, {450, 100}, {0, 0}, "NULL", 1, 1}, "Highscore")));
     Game::instance().addGameObject(
             std::shared_ptr<GameObject>(new TextObject({{90, 350}, {200, 100}, {0, 0}, "NULL", 1, 1}, "Exit")));
-    selector = std::shared_ptr<GameObject>(new UI_Element({{10, 180}, {64, 64}, {0, 0}, "arrow_anim", 1, 4}));
+    selector = std::shared_ptr<GameObject>(new UIElement({{10, 180}, {64, 64}, {0, 0}, "arrow_anim", 1, 4}));
     Game::instance().addGameObject(selector);
     currentSelection = NEWGAME;
     std::cout << "enter MenuState" << std::endl;

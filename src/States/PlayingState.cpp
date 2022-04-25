@@ -10,13 +10,14 @@
 #include "MenuState.h"
 #include "../GameObjects/TextObject.h"
 #include "../SupportClasses/FileReader.h"
+#include "../GameObjects/UIElement.h"
+#include "../GameObjects/BG.h"
 
 void PlayingState::update() {
     updateScore();
     keyInputs();
-
     if (m_player->isMIsDead()) {
-        FileReader::writeHighscore(m_score);
+        FileReader::addHighscore(m_score);
         Game::instance().getMGameStateMachine()->changeState(std::shared_ptr<GameState>(new MenuState("Menu")));
     }
 
@@ -55,23 +56,29 @@ void PlayingState::render() {
 }
 
 bool PlayingState::onEnter() {
+    TextureManager::instance().load("../img/BG_1.png", "bg");
+    TextureManager::instance().load("../img/level1.png", "bg1");
     TextureManager::instance().load("../img/ship3.png", "ship");
     TextureManager::instance().load("../img/UFO.png", "enemy");
     TextureManager::instance().load("../img/bullet.png", "bullet");
     SoundLoader::instance().loadSound("../sound/shoot.wav", "shoot");
+    m_bg = std::shared_ptr<GameObject>(new BG({{0, 0}, {800, 3000}, {0, -1}, "bg", 1, 1}));
+    m_bg_level = std::shared_ptr<GameObject>(new BG({{0, 0}, {800, 600}, {0, 0}, "bg1", 1, 1}));
     m_scoreText = std::shared_ptr<GameObject>(new TextObject({{600, 30}, {120, 30}, {0, 0}, "NULL", 1, 1}, "1"));
-    m_scoreText->setMHasHitBox(false);
     m_player = std::shared_ptr<GameObject>(new Player({{10, 300}, {50, 64}, {1, 1}, "ship", 5, 4},
                                                       std::make_shared<HealthBar>(Vector2D{0, 0}, Vector2D{250, 15})));
+    Game::instance().addGameObject(m_bg);
+    Game::instance().addGameObject(m_bg_level);
     Game::instance().addGameObject(m_scoreText);
     Game::instance().addGameObject(m_player);
-    Game::instance().randomEnemy();
+    Game::instance().setMPlayer(m_player);
+    Game::instance().randomEnemy(0);
     m_score = 0;
     return true;
 }
 
 bool PlayingState::onExit() {
-    FileReader::writeHighscore(m_score);
+    FileReader::addHighscore(m_score);
     SoundLoader::instance().clean();
     Game::instance().cleanState();
     return true;
@@ -86,8 +93,17 @@ std::shared_ptr<GameObject> PlayingState::getPlayer() const {
 }
 
 void PlayingState::updateScore() {
-    m_scoreText_string = "score" + std::to_string(m_score);
+    m_scoreText_string = "score:\t" + std::to_string(m_score);
     m_scoreText->setMText(m_scoreText_string.c_str());
+    if(m_score == 3 && m_currentLevel != 2){
+        TextureManager::instance().cleanAt("bg1");
+        TextureManager::instance().load("../img/level2.png", "bg1");
+        m_currentLevel = 2;
+    }    if(m_score == 6 && m_currentLevel != 3){
+        TextureManager::instance().cleanAt("bg1");
+        TextureManager::instance().load("../img/level3.png", "bg1");
+        m_currentLevel = 3;
+    }
 
 }
 

@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 24/04/2022.
+// Created by 1024 on 24/04/2022.
 //
 
 #ifndef CPP_EKSAMEN3_FILEREADER_H
@@ -14,7 +14,7 @@
 class FileReader {
 
 public:
-    static void writeHighscore(int score);
+    static void addHighscore(int score);
 
    static std::vector<std::string> readLines(const char *path);
 

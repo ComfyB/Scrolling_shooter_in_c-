@@ -44,6 +44,7 @@ protected:
         m_rows = 0;
         m_currentFrame = 0;
         m_hasHitBox = true;
+        m_identifier = "";
     }
 
 public:
@@ -80,6 +81,8 @@ public:
     virtual void shoot(Vector2D velocity, Vector2D offset);
 
     std::string getIdentifier();
+
+    const Vector2D &getMVelocity() const;
 
 };
 

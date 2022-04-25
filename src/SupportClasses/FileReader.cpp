@@ -1,5 +1,5 @@
 //
-// Created by Christoffer Lehre on 24/04/2022.
+// Created by 1024 on 24/04/2022.
 //
 
 #include <fstream>
@@ -19,13 +19,12 @@ std::vector<std::string> FileReader::readLines(const char *path) {
     return tmpvector;
 }
 
-void FileReader::writeHighscore(int score) {
+void FileReader::addHighscore(int score) {
     u_long hslength = 0;
     std::vector<std::string> tmp = FileReader::readLines("../hs.csv");
     std::vector<int> tmpArray;
 
     for (const auto &s: tmp) {
-        std::cout << s << std::endl;
         tmpArray.emplace_back(std::stoi(s));
     }
     tmpArray.emplace_back(score);
@@ -41,7 +40,7 @@ void FileReader::writeHighscore(int score) {
         if (i == 9) {
             if (tmpArray.at(i))file << tmpArray.at(i);
             else
-                file << "0\n";
+                file << "0";
             break;
         }
         if (tmpArray.at(i)) file << tmpArray.at(i) << '\n';
